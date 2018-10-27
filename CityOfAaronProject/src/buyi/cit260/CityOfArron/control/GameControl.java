@@ -77,5 +77,67 @@ public class GameControl {
         }
         return 0.0;
     }
+    public static double calculateVolume(double diameter, double height) {
+        if (diameter < 0)
+            return -1;
+        
+         if (diameter > 100)
+            return -3;
     
+        if (height < 0)
+            return -2;
+        
+         if (height > 200)
+            return -4;
+            
+        double radius = diameter / 2;
+        double volume = Math.PI * (radius * radius) * height;
+        
+        return volume;
+    }
+    public double calculateMaximumWeight (double volume, double weight){
+        double maximumWeight = volume * weight;
+        
+        return maximumWeight;
+    }
+//    public void designBarrel() {
+//        Scanner sc = new Scanner(System.in);
+//        
+//        System.out.println("Select the Resource type");
+//        System.out.println("G - Grains\n"
+//                + "L - Legumes\n"
+//                + "O - Oil\n"
+//                + "D - Drinking Water\n"
+//                + "H - Honey\n"
+//                + "S - Salt\n"
+//                + "Q - Quit\n");
+//        
+//        String op = sc.nextLine();
+//        
+//        switch(op){
+//            case "G":
+//            double volume = calculateVolume(5.0, 2);
+//            double maximumWeight = calculateMaximumWeight(volume, 10)
+//                break;
+//            case "L":
+//                
+//                break;
+//            case "O":
+//                
+//                break;
+//            case "D":
+//                
+//                break;
+//            case "H":
+//                
+//                break;
+//            case "S":
+//                
+//                break;
+//            case "Q":
+//                
+//                break;
+//        }
+//    }
 }
+
