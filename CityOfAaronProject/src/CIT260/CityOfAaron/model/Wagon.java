@@ -14,11 +14,16 @@ import java.util.Objects;
 public class Wagon {
     private double weight, weightAvailable;
     private Player player;
+    private ResourcesType type;
 
-    public Wagon(double weight, double weightAvailable, Player player) {
+    public Wagon() {
+    }
+
+    public Wagon(double weight, double weightAvailable, Player player, ResourcesType type) {
         this.weight = weight;
         this.weightAvailable = weightAvailable;
         this.player = player;
+        this.type = type;
     }
 
     public double getWeight() {
@@ -45,12 +50,21 @@ public class Wagon {
         this.player = player;
     }
 
+    public ResourcesType getType() {
+        return type;
+    }
+
+    public void setType(ResourcesType type) {
+        this.type = type;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.weightAvailable) ^ (Double.doubleToLongBits(this.weightAvailable) >>> 32));
-        hash = 47 * hash + Objects.hashCode(this.player);
+        int hash = 7;
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.weightAvailable) ^ (Double.doubleToLongBits(this.weightAvailable) >>> 32));
+        hash = 11 * hash + Objects.hashCode(this.player);
+        hash = 11 * hash + Objects.hashCode(this.type);
         return hash;
     }
 
@@ -75,14 +89,14 @@ public class Wagon {
         if (!Objects.equals(this.player, other.player)) {
             return false;
         }
+        if (this.type != other.type) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Wagon{" + "weight=" + weight + ", weightAvailable=" + weightAvailable + ", player=" + player + '}';
+        return "Wagon{" + "weight=" + weight + ", weightAvailable=" + weightAvailable + ", player=" + player + ", type=" + type + '}';
     }
-    
-    
-    
 }

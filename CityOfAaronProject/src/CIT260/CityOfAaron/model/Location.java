@@ -17,6 +17,7 @@ public class Location {
     private String description;
     private boolean visited, bloked;
     private boolean hasResources;
+    
 
     public Location(Point point, String description, boolean visited, boolean bloked, boolean hasResources) {
         this.point = point;

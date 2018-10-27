@@ -24,14 +24,14 @@ package CIT260.CityOfAaron.model;
  * @author danielmelo
  */
 public enum ResourcesType {
-   Timber(""),
-   Ore(""),
-   Grains(""),
-   Legumes(""),
-   Oil(""),
-   Drinkingwater(""),
-   Honey(""),
-   Salt("");
+   Timber("Timber"),
+   Ore("Ore"),
+   Grains("Grains"),
+   Legumes("Legumes"),
+   Oil("Oil"),
+   Drinkingwater("Drinkingwater"),
+   Honey("Honey"),
+   Salt("Salt");
    
    
    private String type;

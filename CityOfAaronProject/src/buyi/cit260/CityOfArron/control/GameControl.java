@@ -5,10 +5,13 @@
  */
 package buyi.cit260.CityOfArron.control;
 
+import CIT260.CityOfAaron.model.Barrel;
 import CIT260.CityOfAaron.model.InventoryItem;
 import CIT260.CityOfAaron.model.ItemType;
 import CIT260.CityOfAaron.model.Location;
 import CIT260.CityOfAaron.model.Player;
+import CIT260.CityOfAaron.model.ResourcesType;
+import CIT260.CityOfAaron.model.StorageShed;
 import CIT260.CityOfAaron.model.Wagon;
 import java.util.Scanner;
 
@@ -45,7 +48,7 @@ public class GameControl {
         
         player.setName("John");
         
-        Wagon wagon = new Wagon(10,600,player);
+        Wagon wagon = new Wagon(10,600,player,ResourcesType.Grains);
         
         double realAmount = totalAmount / percentage;
         
@@ -58,6 +61,20 @@ public class GameControl {
         System.out.println("You made it!!!");
         System.out.println("Deliver the resources to the appropriate shed");
         
+        return 0.0;
+    }
+    
+    public double deliverResources(Wagon wagon, StorageShed shed, Barrel barrel) {
+        
+        if(wagon.getWeight() == 0){
+            System.out.println("Wagon is empty!");
+            return -1;
+        }
+        
+        if(shed.getType() != wagon.getType()) {
+            System.out.println("You are in the wrong shed!");
+            return -1;
+        }
         return 0.0;
     }
     
