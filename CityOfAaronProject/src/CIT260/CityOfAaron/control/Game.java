@@ -5,6 +5,8 @@
  */
 package CIT260.CityOfAaron.control;
 
+import CIT260.CityOfAaron.model.Location;
+
 /**
  *
  * @author 1
