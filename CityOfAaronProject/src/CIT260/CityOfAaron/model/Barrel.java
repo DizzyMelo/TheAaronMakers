@@ -14,6 +14,7 @@ import java.util.Objects;
 public class Barrel {
     private double diamenter, height,volume,weight;
     private ResourcesType type;
+    private int numberOfBarrelsAvailable;
 
     public Barrel() {
     }
@@ -58,14 +59,23 @@ public class Barrel {
         this.type = type;
     }
 
+    public int getNumberOfBarrelsAvailable() {
+        return numberOfBarrelsAvailable;
+    }
+
+    public void setNumberOfBarrelsAvailable(int numberOfBarrelsAvailable) {
+        this.numberOfBarrelsAvailable = numberOfBarrelsAvailable;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.diamenter) ^ (Double.doubleToLongBits(this.diamenter) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.height) ^ (Double.doubleToLongBits(this.height) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.volume) ^ (Double.doubleToLongBits(this.volume) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.type);
+        int hash = 7;
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.diamenter) ^ (Double.doubleToLongBits(this.diamenter) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.height) ^ (Double.doubleToLongBits(this.height) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.volume) ^ (Double.doubleToLongBits(this.volume) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        hash = 67 * hash + Objects.hashCode(this.type);
+        hash = 67 * hash + this.numberOfBarrelsAvailable;
         return hash;
     }
 
@@ -93,6 +103,9 @@ public class Barrel {
         if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
             return false;
         }
+        if (this.numberOfBarrelsAvailable != other.numberOfBarrelsAvailable) {
+            return false;
+        }
         if (this.type != other.type) {
             return false;
         }
@@ -101,8 +114,8 @@ public class Barrel {
 
     @Override
     public String toString() {
-        return "Barrel{" + "diamenter=" + diamenter + ", height=" + height + ", volume=" + volume + ", weight=" + weight + ", type=" + type + '}';
+        return "Barrel{" + "diamenter=" + diamenter + ", height=" + height + ", volume=" + volume + ", weight=" + weight + ", type=" + type + ", numberOfBarrelsAvailable=" + numberOfBarrelsAvailable + '}';
     }
-    
+
     
 }

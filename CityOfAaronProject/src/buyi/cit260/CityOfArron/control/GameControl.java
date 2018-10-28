@@ -64,18 +64,40 @@ public class GameControl {
         return 0.0;
     }
     
-    public double deliverResources(Wagon wagon, StorageShed shed, Barrel barrel) {
+    public static int deliverResources(Wagon wagon, StorageShed shed, Barrel barrel) {
         
-        if(wagon.getWeight() == 0){
-            System.out.println("Wagon is empty!");
+        if(wagon.getWeight() <= 0){
             return -1;
+        }
+        
+        if(wagon.getWeight() >= 1000){
+            return -4;
         }
         
         if(shed.getType() != wagon.getType()) {
-            System.out.println("You are in the wrong shed!");
-            return -1;
+            return -2;
         }
-        return 0.0;
+        
+        if(barrel.getWeight() >= 1000){
+            return -6;
+        }
+        
+        if(barrel.getNumberOfBarrelsAvailable() >= 1000){
+            return -7;
+        }
+        
+        double totalWeigthSupported = barrel.getWeight() * barrel.getNumberOfBarrelsAvailable();
+        int neededBarrels = (int) Math.round(wagon.getWeight() / barrel.getWeight());
+        
+        if(wagon.getWeight() > totalWeigthSupported){
+            return -3;
+        }
+        
+        if(neededBarrels > barrel.getNumberOfBarrelsAvailable()) {
+          return -5;  
+        }
+        barrel.setNumberOfBarrelsAvailable(barrel.getNumberOfBarrelsAvailable() - neededBarrels);
+        return neededBarrels;
     }
     public static double calculateVolume(double diameter, double height) {
         if (diameter < 0)

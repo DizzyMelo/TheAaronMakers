@@ -5,6 +5,11 @@
  */
 package buyi.cit260.CityOfArron.control;
 
+import CIT260.CityOfAaron.model.Barrel;
+import CIT260.CityOfAaron.model.ResourcesType;
+import CIT260.CityOfAaron.model.StorageShed;
+import CIT260.CityOfAaron.model.Wagon;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 //import 
@@ -27,9 +32,101 @@ public class GameControlTest {
 //    /**
 //     * Test of deliverResources method, of class GameControl.
 //     */
-//    @Test
-//    public void testDeliverResources() {
-//    }
+    @Test
+    public void testDeliverResources() {
+    
+        Wagon wagon = new Wagon();
+        StorageShed shed = new StorageShed();
+        Barrel barrel = new Barrel();
+        double expResult;
+        int result;
+        
+        System.out.println("Test deliver Resources");
+        
+        
+        System.out.println("Test 1");
+        
+        wagon.setWeight(400);
+        wagon.setType(ResourcesType.Ore);
+        shed.setType(ResourcesType.Ore);
+        barrel.setWeight(50);
+        barrel.setNumberOfBarrelsAvailable(10);
+        expResult = 8;
+        result = GameControl.deliverResources(wagon, shed, barrel);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        System.out.println("Test 2");
+        
+        wagon.setWeight(0);
+        wagon.setType(ResourcesType.Ore);
+        shed.setType(ResourcesType.Ore);
+        barrel.setWeight(50);
+        barrel.setNumberOfBarrelsAvailable(10);
+        expResult = -1;
+        result = GameControl.deliverResources(wagon, shed, barrel);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        System.out.println("Test 3");
+        
+        wagon.setWeight(400);
+        wagon.setType(ResourcesType.Grains);
+        shed.setType(ResourcesType.Ore);
+        barrel.setWeight(50);
+        barrel.setNumberOfBarrelsAvailable(10);
+        expResult = -2;
+        result = GameControl.deliverResources(wagon, shed, barrel);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        System.out.println("Test 4");
+        
+        wagon.setWeight(40000);
+        wagon.setType(ResourcesType.Ore);
+        shed.setType(ResourcesType.Ore);
+        barrel.setWeight(50);
+        barrel.setNumberOfBarrelsAvailable(10);
+        expResult = -4;
+        result = GameControl.deliverResources(wagon, shed, barrel);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        System.out.println("Test 5");
+        
+        wagon.setWeight(400);
+        wagon.setType(ResourcesType.Ore);
+        shed.setType(ResourcesType.Ore);
+        barrel.setWeight(50);
+        barrel.setNumberOfBarrelsAvailable(5);
+        expResult = -3;
+        result = GameControl.deliverResources(wagon, shed, barrel);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        System.out.println("Test 6");
+        
+        wagon.setWeight(400);
+        wagon.setType(ResourcesType.Ore);
+        shed.setType(ResourcesType.Ore);
+        barrel.setWeight(1000);
+        barrel.setNumberOfBarrelsAvailable(10);
+        expResult = -6;
+        result = GameControl.deliverResources(wagon, shed, barrel);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        System.out.println("Test 7");
+        
+        wagon.setWeight(400);
+        wagon.setType(ResourcesType.Ore);
+        shed.setType(ResourcesType.Ore);
+        barrel.setWeight(50);
+        barrel.setNumberOfBarrelsAvailable(1000);
+        expResult = -7;
+        result = GameControl.deliverResources(wagon, shed, barrel);
+        assertEquals(expResult, result, 0.01);
+    }
 
     /**
      * Test of calculateVolume method, of class GameControl.
