@@ -6,6 +6,9 @@
 package buyi.cit260.CityOfArron.control;
 
 import CIT260.CityOfAaron.model.Barrel;
+import CIT260.CityOfAaron.model.InventoryItem;
+import CIT260.CityOfAaron.model.ItemType;
+import CIT260.CityOfAaron.model.Location;
 import CIT260.CityOfAaron.model.ResourcesType;
 import CIT260.CityOfAaron.model.StorageShed;
 import CIT260.CityOfAaron.model.Wagon;
@@ -25,9 +28,113 @@ public class GameControlTest {
     /**
      * Test of harvestResources method, of class GameControl.
      */
-//    @Test
-//    public void testHarvestResources() {
-//    }
+    @Test
+    public void testHarvestResources() {
+        Wagon wagon = new Wagon();
+        Location location = new Location();
+        InventoryItem tools = new InventoryItem();
+        ItemType type = null;
+        double percentage;
+        double expResult;
+        double result;
+        
+        System.out.println("Test harvest Resources");
+        
+        
+        System.out.println("Test 1");
+        wagon.setWeightAvailable(400);
+        location.setHasResources(true);
+        tools.setItemType(type.Tool);
+        percentage = 50;
+        expResult = 250;
+        
+        result = GameControl.harvestResources(location, tools, wagon, percentage);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        
+        System.out.println("Test 2");
+        wagon.setWeightAvailable(400);
+        location.setHasResources(true);
+        tools.setItemType(type.Tool);
+        percentage = 50;
+        expResult = -1;
+        
+        result = GameControl.harvestResources(null, tools, wagon, percentage);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        
+        System.out.println("Test 3");
+        wagon.setWeightAvailable(400);
+        location.setHasResources(true);
+        tools.setItemType(type.Tool);
+        percentage = 50;
+        expResult = -2;
+        
+        result = GameControl.harvestResources(location, null, wagon, percentage);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        
+        System.out.println("Test 4");
+        wagon.setWeightAvailable(400);
+        location.setHasResources(true);
+        tools.setItemType(type.Tool);
+        percentage = 50;
+        expResult = -3;
+        
+        result = GameControl.harvestResources(location, tools, null, percentage);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        
+        System.out.println("Test 5");
+        wagon.setWeightAvailable(400);
+        location.setHasResources(true);
+        tools.setItemType(type.Tool);
+        percentage = 0;
+        expResult = -4;
+        
+        result = GameControl.harvestResources(location, tools, wagon, percentage);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        
+        System.out.println("Test 6");
+        wagon.setWeightAvailable(400);
+        location.setHasResources(false);
+        tools.setItemType(type.Tool);
+        percentage = 50;
+        expResult = -5;
+        
+        result = GameControl.harvestResources(location, tools, wagon, percentage);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        
+        System.out.println("Test 7");
+        wagon.setWeightAvailable(400);
+        location.setHasResources(true);
+        tools.setItemType(type.Provisions);
+        percentage = 50;
+        expResult = -6;
+        
+        result = GameControl.harvestResources(location, tools, wagon, percentage);
+        assertEquals(expResult, result, 0.01);
+        
+        
+        
+        System.out.println("Test 8");
+        wagon.setWeightAvailable(200);
+        location.setHasResources(true);
+        tools.setItemType(type.Tool);
+        percentage = 50;
+        expResult = -7;
+        
+        result = GameControl.harvestResources(location, tools, wagon, percentage);
+        assertEquals(expResult, result, 0.01);
+    }
 //
 //    /**
 //     * Test of deliverResources method, of class GameControl.
@@ -38,7 +145,7 @@ public class GameControlTest {
         Wagon wagon = new Wagon();
         StorageShed shed = new StorageShed();
         Barrel barrel = new Barrel();
-        double expResult;
+        int expResult;
         int result;
         
         System.out.println("Test deliver Resources");

@@ -25,43 +25,53 @@ public class GameControl {
     private ItemType item;
     private Player player = new Player();
     
-    double totalAmount = 500;
     
-    public double harvestResources() {
-        Scanner sc = new Scanner(System.in);
+    Wagon wagon = new Wagon(10,600,player,ResourcesType.Grains);
+    
+    public static double harvestResources(Location location, InventoryItem tools, Wagon wagon, double percentage) {
+        double totalAmount = 500;
+        if(location == null){
+            System.out.println("Location is null");
+            return -1;
+        }
+        
+        if(tools == null){
+            System.out.println("Inventory item is null");
+            return -2;
+        }
+        
+        if(wagon == null){
+            System.out.println("Wagon is null");
+            return -3;
+        }
+        
+        if(percentage <= 0) {
+            System.out.println("Invalid percentage");
+            return -4;
+        }
         
         if(!location.isHasResources()) {
-            return -1;
+            System.out.println("Location has no resources");
+            return -5;
         }
         
-        if(tools.getItemType() != item.Tool) {
-            return -1;
+        if(tools.getItemType() != ItemType.Tool) {
+            System.out.println("You don' have the proper tools to harvest");
+            return -6;
         }
         
-        System.out.println("Enter the percentage you want to harvest");
-        double percentage = sc.nextDouble();
+        double realAmount = Math.round((totalAmount * percentage)/100);
         
-        while (percentage <= 0) {
-            System.out.println("Invalid number\n Reenter the percentage");
-            percentage = sc.nextDouble();
-        }
-        
-        player.setName("John");
-        
-        Wagon wagon = new Wagon(10,600,player,ResourcesType.Grains);
-        
-        double realAmount = totalAmount / percentage;
-        
-        while(realAmount >= wagon.getWeightAvailable()){
-            System.out.println("The wagon cannot support the weight\n Reenter the percentage");
-            percentage = sc.nextDouble();
+        if(realAmount > wagon.getWeightAvailable()){
+            System.out.println("The wagon cannot hold the weight");
+            return -7;
         }
         
         wagon.setWeight(wagon.getWeight() + realAmount);
         System.out.println("You made it!!!");
-        System.out.println("Deliver the resources to the appropriate shed");
+        //System.out.println("Deliver the resources to the appropriate shed");
         
-        return 0.0;
+        return realAmount;
     }
     
     public static int deliverResources(Wagon wagon, StorageShed shed, Barrel barrel) {
