@@ -28,6 +28,13 @@ public class GameControl {
     
     Wagon wagon = new Wagon(10,600,player,ResourcesType.Grains);
     
+    public static Player savePlayer(String name){
+        Player player = new Player();
+        player.setName(name);
+        
+        return player;
+    }
+    
     public static double harvestResources(Location location, InventoryItem tools, Wagon wagon, double percentage) {
         double totalAmount = 500;
         if(location == null){
