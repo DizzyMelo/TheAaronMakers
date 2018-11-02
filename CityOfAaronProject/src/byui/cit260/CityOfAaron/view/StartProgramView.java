@@ -71,8 +71,44 @@ public class StartProgramView {
         System.out.println("================================================= Welcome to the game " + playersName + " We hope you have a lot of fun!"
                 + "=================================================");
         
-        //mainMenuView = Create a new MainMenuView object
-        //mainMenuView.displayMainMenuView()
+        displayMainMenuView();
         return true;
     }
+
+    private void displayMainMenuView() {
+        boolean endView  = false;
+        
+        do{
+            switch(menuItem){
+                case 'N': inventoryItem = newGameItem;
+                    System.out.println("Start new game");
+                    break;
+                case 'R': inventoryItem = restartGameItem;
+                    System.out.println("Restart existing game");
+                    break;
+                case 'H': inventoryItem = HelpGameItem;
+                    System.out.println("Get help on how to play the game");
+                    break;
+                case 'E': inventoryItem = ExitGameItem;
+                    System.out.println("Exit game");
+                    break;
+                default: System.out.println("Invalid selection, try again");
+            }
+        }
+        
+        private boolean doAction(String[] inputs) {
+menuItem = first element in inputs array
+convert menuItem to upper case
+SWITCH menuItem
+“N”: startNewGame()
+“R”: restartGame()
+“H”: getHelp()
+“E”: RETURN true
+DEFAULT: DISPLAY “Invalid menu item.”
+ENDSWITCH
+RETURN false
 }
+    }
+}
+
+
