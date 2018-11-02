@@ -5,6 +5,9 @@
  */
 package byui.cit260.CityOfAaron.view;
 
+import CIT260.CityOfAaron.model.Game;
+import CIT260.CityOfAaron.model.Player;
+import buyi.cit260.CityOfArron.control.GameControl;
 import java.util.Scanner;
 
 /**
@@ -82,11 +85,15 @@ public class MainMenuView {
     }
     
     public void startNewGame(){
-        System.out.println("startNewGame()");
+        Game game = new Game();
+        GameControl.createNewGame(GameControl.getPlayer());
+        GameMenuView gameView = new GameMenuView();
+        gameView.displayGameMenuView();
     }
     
     public void restartGame(){
-        System.out.println("restartGame()");
+        StartExistingGameView startExistingGameView = new StartExistingGameView();
+        startExistingGameView.displayStartExistingGameView();
     }
     
     public void getHelp(){

@@ -23,15 +23,17 @@ public class GameControl {
     private Location location;
     private InventoryItem tools;
     private ItemType item;
-    private Player player = new Player();
+    private static Player player = new Player();
     
     
     Wagon wagon = new Wagon(10,600,player,ResourcesType.Grains);
     
     public static Player savePlayer(String name){
-        Player player = new Player();
         player.setName(name);
-        
+        return player;
+    }
+    
+    public static Player getPlayer(){
         return player;
     }
     
@@ -139,44 +141,10 @@ public class GameControl {
         
         return maximumWeight;
     }
-//    public void designBarrel() {
-//        Scanner sc = new Scanner(System.in);
-//        
-//        System.out.println("Select the Resource type");
-//        System.out.println("G - Grains\n"
-//                + "L - Legumes\n"
-//                + "O - Oil\n"
-//                + "D - Drinking Water\n"
-//                + "H - Honey\n"
-//                + "S - Salt\n"
-//                + "Q - Quit\n");
-//        
-//        String op = sc.nextLine();
-//        
-//        switch(op){
-//            case "G":
-//            double volume = calculateVolume(5.0, 2);
-//            double maximumWeight = calculateMaximumWeight(volume, 10)
-//                break;
-//            case "L":
-//                
-//                break;
-//            case "O":
-//                
-//                break;
-//            case "D":
-//                
-//                break;
-//            case "H":
-//                
-//                break;
-//            case "S":
-//                
-//                break;
-//            case "Q":
-//                
-//                break;
-//        }
-//    }
+    
+    public static void createNewGame(Player player){
+        System.out.println("createNewGame was called " + player.getName());
+    }
+
 }
 
