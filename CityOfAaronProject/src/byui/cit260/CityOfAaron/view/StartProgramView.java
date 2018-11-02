@@ -71,8 +71,10 @@ public class StartProgramView {
         System.out.println("================================================= Welcome to the game " + playersName + " We hope you have a lot of fun!"
                 + "=================================================");
         
-        //mainMenuView = Create a new MainMenuView object
-        //mainMenuView.displayMainMenuView()
+        MainMenuView menuView = new MainMenuView();
+        menuView.displayMainMenuView();
         return true;
     }
 }
+
+
