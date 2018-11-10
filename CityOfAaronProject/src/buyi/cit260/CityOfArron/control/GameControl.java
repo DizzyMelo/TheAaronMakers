@@ -115,6 +115,7 @@ public class GameControl {
         if(neededBarrels > barrel.getNumberOfBarrelsAvailable()) {
           return -5;  
         }
+        shed.setQuantity(wagon.getWeight());  
         barrel.setNumberOfBarrelsAvailable(barrel.getNumberOfBarrelsAvailable() - neededBarrels);
         return neededBarrels;
     }
