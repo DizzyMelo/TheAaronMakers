@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author danielmelo
  */
-public class HarvestResourceView {
+public abstract class HarvestResourceView extends View {
 
     public HarvestResourceView() {
     }
@@ -81,5 +81,30 @@ public class HarvestResourceView {
         gameMenu.displayGameMenuView();
         
         return false;
+    }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String[] getInputs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInput(String promptMessage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String[] getInputs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
