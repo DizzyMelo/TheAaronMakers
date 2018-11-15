@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author danielmelo
  */
-public class HelpMenuView {
+public class HelpMenuView extends View{
 
     public HelpMenuView() {
     }
@@ -28,7 +28,7 @@ public class HelpMenuView {
         }while(endView == false);
     }
     
-    private String[] getInputs() {
+    public String[] getInputs() {
         Scanner sc = new Scanner(System.in);
         
         String[] inputs = new String[1];
@@ -58,7 +58,7 @@ public class HelpMenuView {
         return inputs;
     }
 
-    private boolean doAction(String[] inputs) {
+    public boolean doAction(String[] inputs) {
         
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
@@ -103,5 +103,15 @@ public class HelpMenuView {
     }
     public void getDeliverInstructions(){
         System.out.println("Create deliver resources instructions");
+    }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInput(String promptMessage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

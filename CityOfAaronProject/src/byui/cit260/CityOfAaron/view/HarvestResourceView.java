@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author danielmelo
  */
-public class HarvestResourceView {
+public abstract class HarvestResourceView extends View {
 
     public HarvestResourceView() {
     }
@@ -25,8 +25,8 @@ public class HarvestResourceView {
         boolean endView = false;
         
         do{
-            double[] inputs = getInputs();
-            if(inputs[0] <= 0){
+            String[] inputs = getInputs();
+            if(inputs[0].length() <= 0){
                 System.out.println("You must enter a value greater than zero");
                 continue;
             }
@@ -34,17 +34,17 @@ public class HarvestResourceView {
         }while(endView == false);
     }
     
-    private double[] getInputs() {
+    public String[] getInputs() {
         Scanner sc = new Scanner(System.in);
         
-        double[] inputs = new double[1];
+        String[] inputs = new String[1];
         
         System.out.println("Enter the percentage you want to harvest from the amount: ");
         
         boolean valid = false;
         
         while(valid == false){
-            int value = sc.nextInt();
+            String value = sc.nextLine();
 
             if(String.valueOf(value).length() < 1){
                 System.out.println("You must enter a value");
@@ -81,5 +81,30 @@ public class HarvestResourceView {
         gameMenu.displayGameMenuView();
         
         return false;
+    }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String[] getInputs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInput(String promptMessage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String[] getInputs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -5,18 +5,13 @@
  */
 package byui.cit260.CityOfAaron.view;
 
-import CIT260.CityOfAaron.model.Barrel;
-import CIT260.CityOfAaron.model.ResourcesType;
-import CIT260.CityOfAaron.model.StorageShed;
-import CIT260.CityOfAaron.model.Wagon;
-import buyi.cit260.CityOfArron.control.GameControl;
 import java.util.Scanner;
 
 /**
  *
  * @author danielmelo
  */
-public class GameMenuView {
+public class GameMenuView extends View{
 
     public GameMenuView() {
     }
@@ -33,7 +28,12 @@ public class GameMenuView {
         }while(endView == false);
     }
 
-    private String[] getInputs() {
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String[] getInputs() {
         Scanner sc = new Scanner(System.in);
         
         String[] inputs = new String[1];
@@ -74,7 +74,13 @@ public class GameMenuView {
         return inputs;
     }
         
-    private boolean doAction(String[] inputs) {
+    /**
+     *
+     * @param inputs
+     * @return
+     */
+    @Override
+    public boolean doAction(String[] inputs) {
         
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
@@ -197,6 +203,16 @@ public class GameMenuView {
 
     private void saveGame() {
         System.out.println("saveGame called");
+    }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInput(String promptMessage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

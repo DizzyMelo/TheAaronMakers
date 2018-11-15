@@ -31,7 +31,7 @@ public class MainMenuView extends View {
         }while(endView == false);
     }
 
-    private String[] getInputs() {
+    public String[] getInputs() {
         Scanner sc = new Scanner(System.in);
         
         String[] inputs = new String[1];
@@ -59,7 +59,7 @@ public class MainMenuView extends View {
         return inputs;
     }
 
-    private boolean doAction(String[] inputs) {
+    public boolean doAction(String[] inputs) {
         
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
