@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author danielmelo
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
     public MainMenuView() {
     }
@@ -99,5 +99,15 @@ public class MainMenuView {
     public void getHelp(){
         HelpMenuView help = new HelpMenuView();
         help.displayHelpMenuView();
+    }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInput(String promptMessage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
