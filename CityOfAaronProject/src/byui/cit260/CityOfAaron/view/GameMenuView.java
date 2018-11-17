@@ -49,10 +49,10 @@ public class GameMenuView extends View{
                 + "B - Design barrels\n"
                 + "C - Construct tools\n"
                 + "R - Harvest resource\n"
-                + "D - Deliver resource"
+                + "D - Deliver resource\n"
                 + "W - Work on ship\n"
                 + "P - Pack ship\n"
-                + "J - Launch ship"
+                + "J - Launch ship\n"
                 + "S - Save game\n"
                 + "H - Help\n"
                 + "Q - Quit");
@@ -105,7 +105,8 @@ public class GameMenuView extends View{
                 this.movePersonNewLocation();
                 break;
             case "E":
-                this.estimateResourceNeeded();
+                EstimateResourceView er = new EstimateResourceView();
+                er.display();
                 break;
             case "B":
                 this.designBarrels();

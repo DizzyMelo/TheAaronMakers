@@ -23,40 +23,16 @@ public class StartProgramView extends View{
         boolean endOfView = false;
         
         do {
-            String[] input = getInputs();
+            String playersName = this.getInput("\nWelcome to this amazing Game"
+                + "\nEnter your name");
+            String[] input = new String[1];
+            input[0] = playersName;
             if(input[0].toUpperCase().equals("Q")){
                 return;
             }
             endOfView = doAction(input);
         }while(endOfView != true);
         
-    }
-    @Override
-    public String[] getInputs() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("getInputs method called");
-        
-        String[] inputs = new String[1];
-        
-        System.out.println("Welcome to this amazing Game");
-        
-        boolean valid = false;
-        
-        while(valid == false){
-            System.out.println("Enter your name");
-        
-            String value = sc.nextLine();
-
-            if(value.length() < 1){
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-
-            inputs[0] = value;
-            valid = true;
-        }
-        
-        return inputs;
     }
 
     @Override
@@ -75,6 +51,11 @@ public class StartProgramView extends View{
         MainMenuView menuView = new MainMenuView();
         menuView.displayMainMenuView();
         return true;
+    }
+
+    @Override
+    public String[] getInputs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

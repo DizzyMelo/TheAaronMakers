@@ -16,10 +16,9 @@ public abstract class View implements ViewInterface {
     public View(){
     }
         
-        @Override
-        public void display(){
+    @Override
+    public void display(){
         boolean endView = false;
-        
         do{
             String[] inputs = getInputs();
             if(inputs[0].length() <= 0){
