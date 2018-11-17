@@ -33,7 +33,7 @@ public abstract class HarvestResourceView extends View {
             endView = doAction(inputs);
         }while(endView == false);
     }
-    
+    @Override
     public String[] getInputs() {
         Scanner sc = new Scanner(System.in);
         
@@ -57,8 +57,8 @@ public abstract class HarvestResourceView extends View {
         
         return inputs;
     }
-
-    private boolean doAction(double[] inputs) {
+    
+    public boolean doAction(double[] inputs) {
         
         Wagon wagon = new Wagon();
         Location location = new Location();
@@ -88,10 +88,6 @@ public abstract class HarvestResourceView extends View {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String[] getInputs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public String getInput(String promptMessage) {
@@ -103,8 +99,5 @@ public abstract class HarvestResourceView extends View {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String[] getInputs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

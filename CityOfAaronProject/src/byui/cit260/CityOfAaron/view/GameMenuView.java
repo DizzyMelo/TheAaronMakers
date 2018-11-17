@@ -114,8 +114,8 @@ public class GameMenuView extends View{
                 this.constructTools();
                 break;
             case "R":
-                HarvestResourceView hv = new HarvestResourceView();
-                hv.displayHarvestResouceView();
+                
+                //HarvestResourceView.displayHarvestResouceView();
                 break;
             case "D":
                 this.deliverResource();
