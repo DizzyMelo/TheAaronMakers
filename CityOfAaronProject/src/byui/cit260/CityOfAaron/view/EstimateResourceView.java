@@ -24,7 +24,7 @@ public class EstimateResourceView extends View{
         
         System.out.println("Select one of the options below:");
         System.out.println("T - Timber\n" +
-                            "O - Ore\n" +
+                            "R - Ore\n" +
                             "G - Grains\n" +
                             "L - Legumes\n" +
                             "O - Oil\n" +
