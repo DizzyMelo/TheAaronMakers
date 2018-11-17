@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author danielmelo
  */
-public class StartProgramView {
+public class StartProgramView extends View{
 
     public StartProgramView() {
     }
@@ -31,8 +31,8 @@ public class StartProgramView {
         }while(endOfView != true);
         
     }
-
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         Scanner sc = new Scanner(System.in);
         System.out.println("getInputs method called");
         
@@ -59,7 +59,8 @@ public class StartProgramView {
         return inputs;
     }
 
-    private boolean doAction(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
 
         String playersName = inputs[0];
         Player player = GameControl.savePlayer(playersName);
