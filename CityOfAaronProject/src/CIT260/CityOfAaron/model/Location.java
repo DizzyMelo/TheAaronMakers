@@ -6,6 +6,7 @@
 package CIT260.CityOfAaron.model;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -17,6 +18,8 @@ public class Location {
     private String description;
     private boolean visited, bloked;
     private boolean hasResources;
+    private ArrayList<Actor> actors;
+    private ArrayList<InventoryItem> itemsInLocation;
 
     public Location() {
     }
@@ -69,15 +72,33 @@ public class Location {
         this.hasResources = hasResources;
     }
 
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+
+    public ArrayList<InventoryItem> getItemsInLocation() {
+        return itemsInLocation;
+    }
+
+    public void setItemsInLocation(ArrayList<InventoryItem> itemsInLocation) {
+        this.itemsInLocation = itemsInLocation;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + this.row;
-        hash = 31 * hash + this.column;
-        hash = 31 * hash + Objects.hashCode(this.description);
-        hash = 31 * hash + (this.visited ? 1 : 0);
-        hash = 31 * hash + (this.bloked ? 1 : 0);
-        hash = 31 * hash + (this.hasResources ? 1 : 0);
+        int hash = 7;
+        hash = 97 * hash + this.row;
+        hash = 97 * hash + this.column;
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + (this.visited ? 1 : 0);
+        hash = 97 * hash + (this.bloked ? 1 : 0);
+        hash = 97 * hash + (this.hasResources ? 1 : 0);
+        hash = 97 * hash + Objects.hashCode(this.actors);
+        hash = 97 * hash + Objects.hashCode(this.itemsInLocation);
         return hash;
     }
 
@@ -111,13 +132,18 @@ public class Location {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.actors, other.actors)) {
+            return false;
+        }
+        if (!Objects.equals(this.itemsInLocation, other.itemsInLocation)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", description=" + description + ", visited=" + visited + ", bloked=" + bloked + ", hasResources=" + hasResources + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", description=" + description + ", visited=" + visited + ", bloked=" + bloked + ", hasResources=" + hasResources + ", actors=" + actors + ", itemsInLocation=" + itemsInLocation + '}';
     }
-   
     
 }
