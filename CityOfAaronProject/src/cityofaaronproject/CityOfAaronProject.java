@@ -1,6 +1,9 @@
+package cityofaaronproject;
+
 
 import CIT260.CityOfAaron.model.Animal;
 import CIT260.CityOfAaron.model.Condition;
+import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.InventoryItem;
 import CIT260.CityOfAaron.model.ItemType;
 import CIT260.CityOfAaron.model.Provision;
@@ -18,6 +21,7 @@ import java.util.Scanner;
  * @author 1
  */
 public class CityOfAaronProject {
+    private static Game cerruentGame = null;
 
     /**
      * @param args the command line arguments
@@ -27,4 +31,14 @@ public class CityOfAaronProject {
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
     }
+
+    public static Game getCerruentGame() {
+        return cerruentGame;
+    }
+
+    public static void setCerruentGame(Game cerruentGame) {
+        CityOfAaronProject.cerruentGame = cerruentGame;
+    }
+    
+    
 }

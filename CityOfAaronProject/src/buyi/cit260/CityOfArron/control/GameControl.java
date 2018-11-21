@@ -6,13 +6,16 @@
 package buyi.cit260.CityOfArron.control;
 
 import CIT260.CityOfAaron.model.Barrel;
+import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.InventoryItem;
 import CIT260.CityOfAaron.model.ItemType;
 import CIT260.CityOfAaron.model.Location;
+import CIT260.CityOfAaron.model.Map;
 import CIT260.CityOfAaron.model.Player;
 import CIT260.CityOfAaron.model.ResourcesType;
 import CIT260.CityOfAaron.model.StorageShed;
 import CIT260.CityOfAaron.model.Wagon;
+import cityofaaronproject.CityOfAaronProject;
 import java.util.Scanner;
 
 /**
@@ -143,9 +146,42 @@ public class GameControl {
         return maximumWeight;
     }
     
-    public static void createNewGame(Player player){
-        System.out.println("createNewGame was called " + player.getName());
+    public static int createNewGame(Player player){
+        Map map = null;
+        if(player == null){
+            return -1;
+        }
+        
+        Game game = new Game();
+        game.setPlayer(player);
+        
+        CityOfAaronProject.setCerruentGame(game);
+        
+        game.setItems(createItems());
+        map = createMap(game, 10, 10);
+        
+        if(map == null){
+            System.out.println("Create map failed");
+            return -2;
+        }
+        game.setMap(map);
+        
+        System.out.println("Create game ran ok");
+        return 1;
     }
+    
+     public static InventoryItem[] createItems(){
+         System.out.println("Create Items called");
+         
+         int number = 0;
+         InventoryItem[] items = new InventoryItem[number];
+         return items;
+     }
+     
+     public static Map createMap(Game game,int noOfRows,int noOfColumns){
+         System.out.println("Create map called");
+         Map map = new Map();
+         return map;
+     }
 
 }
-

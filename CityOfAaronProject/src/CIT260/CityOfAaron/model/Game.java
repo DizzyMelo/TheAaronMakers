@@ -6,6 +6,7 @@
 package CIT260.CityOfAaron.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -14,13 +15,16 @@ import java.util.Objects;
  */
 public class Game implements Serializable{
 
-   private String player; 
+   private Player player; 
    private String theMap;
    private String storeHouse;
    private int currentPopulation;
    private int acresOwned;
    private int wheatInStoreage;
    private Player thePlayer;
+   private InventoryItem[] items;
+   private Map map;
+   
    
 
     public Player getThePlayer() {
@@ -31,18 +35,14 @@ public class Game implements Serializable{
         this.thePlayer = thePlayer;
     }
    
-   
-
     public Game() {
     }
    
-   
-
-    public String getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(String player) {
+    public void setPlayer(Player player) {
         this.player = player;
     }
 
@@ -86,20 +86,42 @@ public class Game implements Serializable{
         this.wheatInStoreage = wheatInStoreage;
     }
 
+    public InventoryItem[] getItems() {
+        return items;
+    }
+
+    public void setItems(InventoryItem[] items) {
+        this.items = items;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+    
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 11 * hash + Objects.hashCode(this.player);
-        hash = 11 * hash + Objects.hashCode(this.theMap);
-        hash = 11 * hash + Objects.hashCode(this.storeHouse);
-        hash = 11 * hash + this.currentPopulation;
-        hash = 11 * hash + this.acresOwned;
-        hash = 11 * hash + this.wheatInStoreage;
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.player);
+        hash = 31 * hash + Objects.hashCode(this.theMap);
+        hash = 31 * hash + Objects.hashCode(this.storeHouse);
+        hash = 31 * hash + this.currentPopulation;
+        hash = 31 * hash + this.acresOwned;
+        hash = 31 * hash + this.wheatInStoreage;
+        hash = 31 * hash + Objects.hashCode(this.thePlayer);
+        hash = 31 * hash + Arrays.deepHashCode(this.items);
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -107,15 +129,6 @@ public class Game implements Serializable{
             return false;
         }
         final Game other = (Game) obj;
-        if (!Objects.equals(this.player, other.player)) {
-            return false;
-        }
-        if (!Objects.equals(this.theMap, other.theMap)) {
-            return false;
-        }
-        if (!Objects.equals(this.storeHouse, other.storeHouse)) {
-            return false;
-        }
         if (this.currentPopulation != other.currentPopulation) {
             return false;
         }
@@ -125,17 +138,28 @@ public class Game implements Serializable{
         if (this.wheatInStoreage != other.wheatInStoreage) {
             return false;
         }
+        if (!Objects.equals(this.theMap, other.theMap)) {
+            return false;
+        }
+        if (!Objects.equals(this.storeHouse, other.storeHouse)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Objects.equals(this.thePlayer, other.thePlayer)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.items, other.items)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "player=" + player + ", theMap=" + theMap + ", storeHouse=" + storeHouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStoreage=" + wheatInStoreage + '}';
+        return "Game{" + "player=" + player + ", theMap=" + theMap + ", storeHouse=" + storeHouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStoreage=" + wheatInStoreage + ", thePlayer=" + thePlayer + ", items=" + items + '}';
     }
    
-   
-   
-   
-                    
-                            
+    
 }
