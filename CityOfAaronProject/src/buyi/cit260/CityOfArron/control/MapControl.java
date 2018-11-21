@@ -9,7 +9,7 @@ import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.InventoryItem;
 import CIT260.CityOfAaron.model.Location;
 import CIT260.CityOfAaron.model.Map;
-import static buyi.cit260.CityOfArron.control.GameControl.createLocations;
+
 
 /**
  *
