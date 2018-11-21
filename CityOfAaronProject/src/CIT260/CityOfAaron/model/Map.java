@@ -15,45 +15,50 @@ import java.util.Objects;
  */
 public class Map implements Serializable{
     
-    private int location;
-    private Point currentLocation;
-
+    private String description;
+    private int noOfRows,noOfColumns;
+    
     public Map() {
     }
 
-    
-    public int getLocation() {
-        return location;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLocation(int location) {
-        this.location = location;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Point getCurrentLocation() {
-        return currentLocation;
+    public int getNoOfRows() {
+        return noOfRows;
     }
 
-    public void setCurrentLocation(Point currentLocation) {
-        this.currentLocation = currentLocation;
+    public void setNoOfRows(int noOfRows) {
+        this.noOfRows = noOfRows;
+    }
+
+    public int getNoOfColumns() {
+        return noOfColumns;
+    }
+
+    public void setNoOfColumns(int noOfColumns) {
+        this.noOfColumns = noOfColumns;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 89 * hash + this.location;
-        hash = 89 * hash + Objects.hashCode(this.currentLocation);
+        hash = 29 * hash + Objects.hashCode(this.description);
+        hash = 29 * hash + this.noOfRows;
+        hash = 29 * hash + this.noOfColumns;
         return hash;
     }
 
     @Override
-    public String toString() {
-        return "Map{" + "location=" + location + ", currentLocation=" + currentLocation + '}';
-    }
-
-    
-    @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -61,18 +66,21 @@ public class Map implements Serializable{
             return false;
         }
         final Map other = (Map) obj;
-        if (this.location != other.location) {
+        if (this.noOfRows != other.noOfRows) {
             return false;
         }
-        if (!Objects.equals(this.currentLocation, other.currentLocation)) {
+        if (this.noOfColumns != other.noOfColumns) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         return true;
     }
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Map{" + "description=" + description + ", noOfRows=" + noOfRows + ", noOfColumns=" + noOfColumns + '}';
+    }
+
 }

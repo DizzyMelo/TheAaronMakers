@@ -6,8 +6,10 @@
 package buyi.cit260.CityOfArron.control;
 
 import CIT260.CityOfAaron.model.Barrel;
+import CIT260.CityOfAaron.model.Condition;
 import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.InventoryItem;
+import CIT260.CityOfAaron.model.InventoryItemType;
 import CIT260.CityOfAaron.model.ItemType;
 import CIT260.CityOfAaron.model.Location;
 import CIT260.CityOfAaron.model.Map;
@@ -173,15 +175,111 @@ public class GameControl {
      public static InventoryItem[] createItems(){
          System.out.println("Create Items called");
          
-         int number = 0;
-         InventoryItem[] items = new InventoryItem[number];
+         InventoryItem[] items = new InventoryItem[15];
+         
+         InventoryItem item = new InventoryItem();
+         
+         item.setName("Lumber");
+         item.setQuantity(0);
+         items[InventoryItemType.lumber.ordinal()] = item;
+         
+         item.setName("Ore");
+         item.setQuantity(0);
+         items[InventoryItemType.ore.ordinal()] = item;
+         
+         item.setName("Grain");
+         item.setQuantity(0);
+         items[InventoryItemType.grain.ordinal()] = item;
+         
+         item.setName("Legume");
+         item.setQuantity(0);
+         items[InventoryItemType.legume.ordinal()] = item;
+         
+         item.setName("Oil");
+         item.setQuantity(0);
+         items[InventoryItemType.oil.ordinal()] = item;
+         
+         item.setName("Water");
+         item.setQuantity(0);
+         items[InventoryItemType.water.ordinal()] = item;
+         
+         item.setName("Honey");
+         item.setQuantity(0);
+         items[InventoryItemType.honey.ordinal()] = item;
+         
+         item.setName("Salt");
+         item.setQuantity(0);
+         items[InventoryItemType.salt.ordinal()] = item;
+         
+         item.setName("Axe");
+         item.setQuantity(0);
+         items[InventoryItemType.axe.ordinal()] = item;
+         
+         item.setName("Hammer");
+         item.setQuantity(0);
+         items[InventoryItemType.hammer.ordinal()] = item;
+         
+         item.setName("Drill");
+         item.setQuantity(0);
+         items[InventoryItemType.drill.ordinal()] = item;
+         
+         item.setName("Shovel");
+         item.setQuantity(0);
+         items[InventoryItemType.shovel.ordinal()] = item;
+         
+         item.setName("Sickle");
+         item.setQuantity(0);
+         items[InventoryItemType.sickle.ordinal()] = item;
+         
+         item.setName("Saw");
+         item.setQuantity(0);
+         items[InventoryItemType.saw.ordinal()] = item;
+         
+         item.setName("Nails");
+         item.setQuantity(0);
+         items[InventoryItemType.nails.ordinal()] = item;
+         
+         
          return items;
      }
      
      public static Map createMap(Game game,int noOfRows,int noOfColumns){
          System.out.println("Create map called");
+         if(noOfRows < 0 || noOfColumns < 0){
+             return null;
+         }
+         
          Map map = new Map();
+         map.setDescription("This is the description");
+         map.setNoOfRows(noOfRows);
+         map.setNoOfColumns(noOfColumns);
+         game.setMap(map);
+         
+         Location[][] location = createLocations(0,0);
+         
+         if(location == null){
+             return null;
+         }
+         
+         int success = assignActorsToLocations(location);
+         
+         if(success < 0){
+             return null;
+         }
+         
          return map;
      }
+     
+      public static Location[][] createLocations(int rows, int columns){
+          return null;
+      }
+      
+       private static int assignActorsToLocations(Location[][] locations){
+           return 0;
+       }
+       
+       private static int assignItemsToLocations( Location[][] locations,InventoryItem[] itemsInGame){
+           return 0;
+       }
 
 }
