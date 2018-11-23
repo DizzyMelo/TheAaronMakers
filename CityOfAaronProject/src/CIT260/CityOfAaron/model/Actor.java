@@ -5,6 +5,7 @@
  */
 package CIT260.CityOfAaron.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -13,11 +14,18 @@ import java.util.Objects;
  *
  * @author kss_s
  */
-public class Actor implements Serializable{
-    String name, description;
-    int[][] coordinates;
+public enum Actor implements Serializable{
+    
+    Nephi,
+    Lehi,
+    Alma,
+    Moroni,
+    Mormon;
+    
+    private String name, description;
+    private Point coordinates;
 
-    public Actor() {
+    private Actor() {
     }
 
     public String getName() {
@@ -36,51 +44,17 @@ public class Actor implements Serializable{
         this.description = description;
     }
 
-    public int[][] getCoordinates() {
+    public Point getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(int[][] coordinates) {
+    public void setCoordinates(Point coordinates) {
         this.coordinates = coordinates;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + Objects.hashCode(this.description);
-        hash = 67 * hash + Arrays.deepHashCode(this.coordinates);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Actor other = (Actor) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Arrays.deepEquals(this.coordinates, other.coordinates)) {
-            return false;
-        }
-        return true;
     }
 
     @Override
     public String toString() {
         return "Actor{" + "name=" + name + ", description=" + description + ", coordinates=" + coordinates + '}';
     }
-    
     
 }

@@ -19,7 +19,10 @@ public class Location {
     private boolean visited, bloked;
     private boolean hasResources;
     private ArrayList<Actor> actors;
+    private Actor actor;
+    private InventoryItemType item;
     private ArrayList<InventoryItem> itemsInLocation;
+    
 
     public Location() {
     }
@@ -80,6 +83,22 @@ public class Location {
         this.actors = actors;
     }
 
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public InventoryItemType getItem() {
+        return item;
+    }
+
+    public void setItem(InventoryItemType item) {
+        this.item = item;
+    }
+
     public ArrayList<InventoryItem> getItemsInLocation() {
         return itemsInLocation;
     }
@@ -87,18 +106,21 @@ public class Location {
     public void setItemsInLocation(ArrayList<InventoryItem> itemsInLocation) {
         this.itemsInLocation = itemsInLocation;
     }
+    
+    
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.row;
-        hash = 97 * hash + this.column;
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + (this.visited ? 1 : 0);
-        hash = 97 * hash + (this.bloked ? 1 : 0);
-        hash = 97 * hash + (this.hasResources ? 1 : 0);
-        hash = 97 * hash + Objects.hashCode(this.actors);
-        hash = 97 * hash + Objects.hashCode(this.itemsInLocation);
+        int hash = 5;
+        hash = 71 * hash + this.row;
+        hash = 71 * hash + this.column;
+        hash = 71 * hash + Objects.hashCode(this.description);
+        hash = 71 * hash + (this.visited ? 1 : 0);
+        hash = 71 * hash + (this.bloked ? 1 : 0);
+        hash = 71 * hash + (this.hasResources ? 1 : 0);
+        hash = 71 * hash + Objects.hashCode(this.actors);
+        hash = 71 * hash + Objects.hashCode(this.actor);
+        hash = 71 * hash + Objects.hashCode(this.item);
         return hash;
     }
 
@@ -135,7 +157,10 @@ public class Location {
         if (!Objects.equals(this.actors, other.actors)) {
             return false;
         }
-        if (!Objects.equals(this.itemsInLocation, other.itemsInLocation)) {
+        if (this.actor != other.actor) {
+            return false;
+        }
+        if (!Objects.equals(this.item, other.item)) {
             return false;
         }
         return true;
@@ -143,7 +168,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", description=" + description + ", visited=" + visited + ", bloked=" + bloked + ", hasResources=" + hasResources + ", actors=" + actors + ", itemsInLocation=" + itemsInLocation + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", description=" + description + ", visited=" + visited + ", bloked=" + bloked + ", hasResources=" + hasResources + ", actors=" + actors + ", actor=" + actor + ", item=" + item + '}';
     }
     
 }

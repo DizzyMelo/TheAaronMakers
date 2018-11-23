@@ -22,7 +22,7 @@ public class Game implements Serializable{
    private int acresOwned;
    private int wheatInStoreage;
    private Player thePlayer;
-   private InventoryItem[] items;
+   private InventoryItemType[] items;
    private Map map;
    
    
@@ -86,11 +86,11 @@ public class Game implements Serializable{
         this.wheatInStoreage = wheatInStoreage;
     }
 
-    public InventoryItem[] getItems() {
+    public InventoryItemType[] getItems() {
         return items;
     }
 
-    public void setItems(InventoryItem[] items) {
+    public void setItems(InventoryItemType[] items) {
         this.items = items;
     }
 

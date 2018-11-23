@@ -8,10 +8,12 @@ package buyi.cit260.CityOfArron.control;
 import CIT260.CityOfAaron.model.Actor;
 import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.InventoryItem;
+import CIT260.CityOfAaron.model.InventoryItemType;
 import CIT260.CityOfAaron.model.Location;
 import CIT260.CityOfAaron.model.Map;
 import CIT260.CityOfAaron.model.ResourceLocation;
 import cityofaaronproject.CityOfAaronProject;
+import java.awt.Point;
 import java.util.ArrayList;
 
 
@@ -86,10 +88,29 @@ public class MapControl {
     }
 
     private static int assignActorsToLocations(Location[][] locations){
-        return 0;
+        
+        if(locations == null){
+            return -1;
+        }
+        
+        Location location = locations[2][1];
+        location.setActor(Actor.Nephi);
+        Point actorCoordinates = Actor.Nephi.getCoordinates();
+        actorCoordinates.x = 2;
+        actorCoordinates.y = 1;
+        
+        return 1;
     }
 
-    private static int assignItemsToLocations( Location[][] locations,InventoryItem[] itemsInGame){
-        return 0;
+    private static int assignItemsToLocations( Location[][] locations,InventoryItemType[] itemsInGame){
+        
+        if(locations == null || itemsInGame == null){
+            return -1;
+        }
+        
+        Location location = locations[3][2];
+        location.setItem(itemsInGame[InventoryItemType.lumber.ordinal()]);
+        
+        return 1;
     }
 }
