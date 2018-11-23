@@ -102,14 +102,14 @@ public class MapControl {
         return 1;
     }
 
-    private static int assignItemsToLocations( Location[][] locations,InventoryItemType[] itemsInGame){
+    private static int assignItemsToLocations( Location[][] locations,InventoryItem[] itemsInGame){
         
         if(locations == null || itemsInGame == null){
             return -1;
         }
         
         Location location = locations[3][2];
-        location.setItem(itemsInGame[InventoryItemType.lumber.ordinal()]);
+        location.setItem(itemsInGame[InventoryItemType.legume.ordinal()]);
         
         return 1;
     }

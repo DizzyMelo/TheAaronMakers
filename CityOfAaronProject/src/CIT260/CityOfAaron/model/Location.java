@@ -20,7 +20,7 @@ public class Location {
     private boolean hasResources;
     private ArrayList<Actor> actors;
     private Actor actor;
-    private InventoryItemType item;
+    private InventoryItem item;
     private ArrayList<InventoryItem> itemsInLocation;
     
 
@@ -91,11 +91,11 @@ public class Location {
         this.actor = actor;
     }
 
-    public InventoryItemType getItem() {
+    public InventoryItem getItem() {
         return item;
     }
 
-    public void setItem(InventoryItemType item) {
+    public void setItem(InventoryItem item) {
         this.item = item;
     }
 
