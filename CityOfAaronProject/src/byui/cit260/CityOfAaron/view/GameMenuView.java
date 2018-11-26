@@ -151,36 +151,47 @@ public class GameMenuView extends View{
     }
     
     public void displayMap(){
-        System.out.println("viewMap called");
         
         Game game = CityOfAaronProject.getCurrentGame();
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
         
         System.out.println("THE LAND OF BOUNTIFUL");
-        
+            System.out.print("    ");
         for(int i = 0; i < map.getNoOfColumns(); i++){
-            System.out.print(String.valueOf(i+1)+"\t");
+            System.out.print(String.valueOf(i+1)+"    ");
         }
         
-        for(int i = 0; i < map.getNoOfRows(); i++){
+        int c = (map.getNoOfColumns() - 1);
+        int r = (map.getNoOfRows() - 1);
+        
+        //System.out.println("NUMERO DE ROWS " + map.getNoOfRows());
+        //System.out.println("NUMERO DE COLS " + map.getNoOfColumns());
+        
+        for(int i = 0; i < (map.getNoOfRows()); i++){
             System.out.println(" ");
             System.out.println("-------------------------");
-            System.out.println(String.valueOf(i+1));
-            for(int j = 0; j < map.getNoOfColumns(); i++){
-                System.out.print("|");
-                Location location = locations[i][j];
-                if(location.isVisited()){
-                    String mapSymbol = "*";
-                    System.out.print("|");
-                }else{
-                    System.out.print("??");
-                }
+            System.out.print(String.valueOf(i+1));
+            for(int j = 0; j < (map.getNoOfColumns()); j++){
+                System.out.print(" | ");
+                
+                    
+                    Location location = locations[i][j];
+                    
+                    if(location.isVisited()){
+                        String mapSymbol = "*";
+                        System.out.print(mapSymbol);
+                    }else{
+                        System.out.print("??");
+                    }
+                
+                
             }
-            System.out.print("|");
+            System.out.print(" |");
         }
         
-        System.out.print("---------------------");
+        System.out.println("");
+        System.out.println("-------------------------");
         
     }
 
