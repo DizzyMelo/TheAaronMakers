@@ -162,11 +162,6 @@ public class GameMenuView extends View{
             System.out.print(String.valueOf(i+1)+"    ");
         }
         
-        int c = (map.getNoOfColumns() - 1);
-        int r = (map.getNoOfRows() - 1);
-        
-        //System.out.println("NUMERO DE ROWS " + map.getNoOfRows());
-        //System.out.println("NUMERO DE COLS " + map.getNoOfColumns());
         
         for(int i = 0; i < (map.getNoOfRows()); i++){
             System.out.println(" ");
