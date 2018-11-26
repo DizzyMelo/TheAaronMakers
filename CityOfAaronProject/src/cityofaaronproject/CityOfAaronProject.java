@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @author 1
  */
 public class CityOfAaronProject {
-    private static Game cerruentGame = null;
+    private static Game currentGame = null;
 
     /**
      * @param args the command line arguments
@@ -32,12 +32,12 @@ public class CityOfAaronProject {
         startProgramView.displayStartProgramView();
     }
 
-    public static Game getCerruentGame() {
-        return cerruentGame;
+    public static Game getCurrentGame() {
+        return currentGame;
     }
 
-    public static void setCerruentGame(Game cerruentGame) {
-        CityOfAaronProject.cerruentGame = cerruentGame;
+    public static void setCurrentGame(Game cerruentGame) {
+        CityOfAaronProject.currentGame = cerruentGame;
     }
     
     

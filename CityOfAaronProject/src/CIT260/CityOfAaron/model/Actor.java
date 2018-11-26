@@ -16,16 +16,19 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable{
     
-    Nephi,
-    Lehi,
-    Alma,
-    Moroni,
-    Mormon;
+    Nephi("Nephi", "description", new Point(0,0)),
+    Lehi("Nephi", "description", new Point(0,0)),
+    Alma("Nephi", "description", new Point(0,0)),
+    Moroni("Nephi", "description", new Point(0,0)),
+    Mormon("Nephi", "description", new Point(0,0));
     
     private String name, description;
     private Point coordinates;
 
-    private Actor() {
+    private Actor(String name, String description, Point coordinates) {
+        this.name = name;
+        this.description = description;
+        this.coordinates = coordinates;
     }
 
     public String getName() {

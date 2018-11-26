@@ -157,10 +157,10 @@ public class GameControl {
         Game game = new Game();
         game.setPlayer(player);
         
-        CityOfAaronProject.setCerruentGame(game);
+        CityOfAaronProject.setCurrentGame(game);
         
         game.setItems(createItems());
-        map = MapControl.createMap(game, 10, 10);
+        map = MapControl.createMap(game, 4, 4);
         
         if(map == null){
             System.out.println("Create map failed");

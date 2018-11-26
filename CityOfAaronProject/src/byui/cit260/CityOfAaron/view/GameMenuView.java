@@ -5,6 +5,10 @@
  */
 package byui.cit260.CityOfAaron.view;
 
+import CIT260.CityOfAaron.model.Game;
+import CIT260.CityOfAaron.model.Location;
+import CIT260.CityOfAaron.model.Map;
+import cityofaaronproject.CityOfAaronProject;
 import java.util.Scanner;
 
 /**
@@ -87,7 +91,7 @@ public class GameMenuView extends View{
         
         switch(menuItem){
             case "V":
-                this.viewMap();
+                this.displayMap();
                 break;
             case "I":
                 this.viewListOfItems();
@@ -134,7 +138,7 @@ public class GameMenuView extends View{
                 this.saveGame();
                 break;
             case "H":
-                this.viewMap();
+                this.displayMap();
                 break;
             case "Q":
                 return true;
@@ -146,8 +150,38 @@ public class GameMenuView extends View{
         return false;
     }
     
-    public void viewMap(){
+    public void displayMap(){
         System.out.println("viewMap called");
+        
+        Game game = CityOfAaronProject.getCurrentGame();
+        Map map = game.getMap();
+        Location[][] locations = map.getLocations();
+        
+        System.out.println("THE LAND OF BOUNTIFUL");
+        
+        for(int i = 0; i < map.getNoOfColumns(); i++){
+            System.out.print(String.valueOf(i+1)+"\t");
+        }
+        
+        for(int i = 0; i < map.getNoOfRows(); i++){
+            System.out.println(" ");
+            System.out.println("-------------------------");
+            System.out.println(String.valueOf(i+1));
+            for(int j = 0; j < map.getNoOfColumns(); i++){
+                System.out.print("|");
+                Location location = locations[i][j];
+                if(location.isVisited()){
+                    String mapSymbol = "*";
+                    System.out.print("|");
+                }else{
+                    System.out.print("??");
+                }
+            }
+            System.out.print("|");
+        }
+        
+        System.out.print("---------------------");
+        
     }
 
     private void viewListOfItems() {
