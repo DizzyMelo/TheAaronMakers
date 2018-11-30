@@ -70,7 +70,7 @@ public class GameControl {
         }
         
         if(tools.getItemType() != ItemType.Tool) {
-            System.out.println("You don' have the proper tools to harvest");
+            System.out.println("You don't have the proper tools to harvest");
             return -6;
         }
         
