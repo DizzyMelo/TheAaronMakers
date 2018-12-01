@@ -58,7 +58,7 @@ public abstract class HarvestResourceView extends View {
         return inputs;
     }
     
-    public boolean doAction(double[] inputs) {
+    public boolean doAction(double[] inputs) throws Exception {
         
         Wagon wagon = new Wagon();
         Location location = new Location();

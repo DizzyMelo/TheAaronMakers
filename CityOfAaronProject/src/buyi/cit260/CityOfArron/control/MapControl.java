@@ -16,7 +16,7 @@ import CIT260.CityOfAaron.model.ResourceLocation;
 import cityofaaronproject.CityOfAaronProject;
 import java.awt.Point;
 import java.util.ArrayList;
-
+import buyi.cit260.CityOfArron.exceptions.MapControlException;
 
 /**
  *
@@ -336,5 +336,38 @@ public class MapControl {
         location.setItem(itemsInGame[InventoryItemType.legume.ordinal()]);
         
         return 1;
+    }
+    
+    public static Location moveActor(Actor actor, int newRow, int newColumn) throws MapControlException {
+                
+        if(actor == null){
+            throw new MapControlException("The Actor object is null.");
+        }
+        Game game = CityOfAaronProject.getCurrentGame();
+        Map map = game.getMap();
+        
+        Location[][] locations = map.getLocations();
+        
+        if(newRow < 1 || newRow > map.getNoOfRows() || newColumn < 1 || newColumn > map.getNoOfColumns()){
+            throw new MapControlException("Roes or columns error.");
+        }
+        
+        int currentRow = actor.getCoordinates().x;
+        int currentColumn = actor.getCoordinates().x;
+        Location oldLocation = locations[currentRow][currentColumn];
+                //get the location from the locations
+                  //    array at the current row and column
+        Location newLocation = locations[newRow][newColumn];
+                //get the location at the new row and column
+        
+                
+                
+        actor.setCoordinates(new Point(newRow, newColumn));
+        //set actor in the oldLocation to null
+        //set actor in the newLocation to the actor
+        //set row in actor to newRow
+        //set column in actor to newColumn
+        
+        return newLocation;
     }
 }

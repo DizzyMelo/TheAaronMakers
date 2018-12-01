@@ -19,6 +19,7 @@ import CIT260.CityOfAaron.model.StorageShed;
 import CIT260.CityOfAaron.model.Wagon;
 import cityofaaronproject.CityOfAaronProject;
 import java.util.Scanner;
+import buyi.cit260.CityOfArron.exceptions.GameControlException;
 
 /**
  *
@@ -42,43 +43,36 @@ public class GameControl {
         return player;
     }
     
-    public static double harvestResources(Location location, InventoryItem tools, Wagon wagon, double percentage) {
+    public static double harvestResources(Location location, InventoryItem tools, Wagon wagon, double percentage) throws Exception{
         double totalAmount = 500;
         if(location == null){
-            System.out.println("Location is null");
-            return -1;
+            throw new GameControlException("The location is a null object"); 
         }
         
         if(tools == null){
-            System.out.println("Inventory item is null");
-            return -2;
+            throw new GameControlException("The Inventory Item is a null object.");
         }
         
         if(wagon == null){
-            System.out.println("Wagon is null");
-            return -3;
+            throw new GameControlException("The Wagon is a null object.");
         }
         
         if(percentage <= 0) {
-            System.out.println("Invalid percentage");
-            return -4;
+            throw new GameControlException("The Wagon is a null object.");
         }
         
         if(!location.isHasResources()) {
-            System.out.println("Location has no resources");
-            return -5;
+            throw new GameControlException("TLocation has no resources");
         }
         
         if(tools.getItemType() != ItemType.Tool) {
-            System.out.println("You don't have the proper tools to harvest");
-            return -6;
+            throw new GameControlException("You don't have the proper tools to harvest");
         }
         
         double realAmount = Math.round((totalAmount * percentage)/100);
         
         if(realAmount > wagon.getWeightAvailable()){
-            System.out.println("The wagon cannot hold the weight");
-            return -7;
+            throw new GameControlException("The wagon cannot hold the weight");
         }
         
         wagon.setWeight(wagon.getWeight() + realAmount);

@@ -29,7 +29,7 @@ public class GameControlTest {
      * Test of harvestResources method, of class GameControl.
      */
     @Test
-    public void testHarvestResources() {
+    public void testHarvestResources() throws Exception {
         Wagon wagon = new Wagon();
         Location location = new Location();
         InventoryItem tools = new InventoryItem();
