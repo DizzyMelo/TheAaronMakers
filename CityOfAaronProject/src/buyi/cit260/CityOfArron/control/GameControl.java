@@ -118,29 +118,7 @@ public class GameControl {
         barrel.setNumberOfBarrelsAvailable(barrel.getNumberOfBarrelsAvailable() - neededBarrels);
         return neededBarrels;
     }
-    public static double calculateVolume(double diameter, double height) {
-        if (diameter < 0)
-            return -1;
-        
-         if (diameter > 100)
-            return -3;
-    
-        if (height < 0)
-            return -2;
-        
-         if (height > 200)
-            return -4;
-            
-        double radius = diameter / 2;
-        double volume = Math.PI * (radius * radius) * height;
-        
-        return volume;
-    }
-    public double calculateMaximumWeight (double volume, double weight){
-        double maximumWeight = volume * weight;
-        
-        return maximumWeight;
-    }
+
     
     public static int createNewGame(Player player){
         Map map = null;

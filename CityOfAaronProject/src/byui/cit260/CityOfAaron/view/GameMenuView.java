@@ -8,8 +8,12 @@ package byui.cit260.CityOfAaron.view;
 import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.Location;
 import CIT260.CityOfAaron.model.Map;
+import buyi.cit260.CityOfArron.control.BarrelControl;
+import buyi.cit260.CityOfArron.exceptions.BarrelControlException;
 import cityofaaronproject.CityOfAaronProject;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -215,7 +219,45 @@ public class GameMenuView extends View{
     }
 
     private void designBarrels() {
-        System.out.println("designBarrels called");
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter the diameter of the barrel");
+        String diameterStr = sc.nextLine();
+        double diameter = 0;
+        try{
+            diameter = Double.parseDouble(diameterStr);
+        }catch(NumberFormatException ex){
+            System.out.println("Please, enter a number!");
+            return;
+        }
+        
+        
+        System.out.println("Enter the height of the barrel");
+        String heightStr = sc.nextLine();
+        double height = 0;
+        try{
+            height = Double.parseDouble(heightStr);
+        }catch(NumberFormatException ex){
+            System.out.println("Please, enter a number!");
+        }
+        
+        double volume = 0;
+        try {
+            volume = BarrelControl.calculateVolume(diameter, height);
+        } catch (BarrelControlException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        double maxWeight = 0;
+        try {
+            maxWeight = BarrelControl.calculateMaximumWeight(volume, height);
+        } catch (BarrelControlException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        System.out.println("The volume is: " + volume);
+        System.out.println("The maximum weight is: " + maxWeight);
+        
     }
 
     private void constructTools() {

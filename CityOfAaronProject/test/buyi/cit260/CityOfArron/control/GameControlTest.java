@@ -238,6 +238,8 @@ public class GameControlTest {
     /**
      * Test of calculateVolume method, of class GameControl.
      */
+    
+    /*
     @Test
     public void testCalculateVolume() {
       double diameter;
@@ -298,7 +300,7 @@ public class GameControlTest {
       
         //calculateVolume(diamenter, height)
     }
-    
+         */
 
     /**
      * Test of calculateMaximumWeight method, of class GameControl.
