@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/control/exceptions/GameControlException.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/MoveActorView.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/exceptions/GameControlException.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/control/MapControl.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/control/GameControl.java</file>
         </group>
     </open-files>
 </project-private>

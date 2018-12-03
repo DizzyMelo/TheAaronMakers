@@ -360,8 +360,8 @@ public class MapControl {
         Location newLocation = locations[newRow][newColumn];
                 //get the location at the new row and column
         
-                
-                
+        oldLocation.setActors(null);
+        
         actor.setCoordinates(new Point(newRow, newColumn));
         //set actor in the oldLocation to null
         //set actor in the newLocation to the actor
