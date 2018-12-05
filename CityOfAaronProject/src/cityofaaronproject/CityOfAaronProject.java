@@ -38,7 +38,7 @@ public class CityOfAaronProject {
     }
     
     public static void setInfile(BufferedReader inFile){
-         CuriousWorkmanship = inFile;
+         CityOfAaronProject = inFile;
     }
     
     
@@ -74,11 +74,11 @@ public class CityOfAaronProject {
          
          try{
          
-             if (CuriousWorkmanship.inFile != null);
-                 CuriousWorkmanship.inFile.close();
+             if (CityOfAaronProject.inFile != null);
+                 CityOfAaronProject.inFile.close();
                  
-             if (CuriousWorkmanship.outFile != null)
-                 CuriousWorkmanship.outFile.close();
+             if (CityOfAaronProject.outFile != null)
+                 CityOfAaronProject.outFile.close();
          
          } catch (IOException ex){
              System.out.println("Error closing files");
