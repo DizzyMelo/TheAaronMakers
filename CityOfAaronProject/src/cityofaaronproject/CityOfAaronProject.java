@@ -22,15 +22,69 @@ import java.util.Scanner;
  */
 public class CityOfAaronProject {
     private static Game currentGame = null;
+    
+    private static PrintWriter outfile = null;
+    private static BufferedReader infile = null;
+    
+    public static PrintWriter getOutFile(){
+    }
+    
+    public static void setOutFile(PrintWriter outFile){
+        CityOfAaronProject.outFile = outFile;
+    }
+    
+    public static BufferedReader getInFile(){
+        return inFile; 
+    }
+    
+    public static void setInfile(BufferedReader inFile){
+         CuriousWorkmanship = inFile;
+    }
+    
+    
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+     try{  
+        
+        CityOfAaronProject.inFile =
+                new BufferedReader(new InputStreamReader(System.in));
+        
+        CityOfAaronProject.outFile = new PrintWriter(System.out, true);
+        
         // TODO code application logic here
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
+        return;
+        
+    } catch (Throwable e){
+        
+        System.out.println["Exception: " + e.toString()+
+                           "\nCause:" + e.getCause() +
+                           "\nMessage:" + e.getMessage()];
+        
+        e.printStackTrace();
     }
+     
+         finally{
+         
+         try{
+         
+             if (CuriousWorkmanship.inFile != null);
+                 CuriousWorkmanship.inFile.close();
+                 
+             if (CuriousWorkmanship.outFile != null)
+                 CuriousWorkmanship.outFile.close();
+         
+         } catch (IOException ex){
+             System.out.println("Error closing files");
+             return;
+         }
+     }
 
     public static Game getCurrentGame() {
         return currentGame;
