@@ -5,7 +5,10 @@
  */
 package byui.cit260.CityOfAaron.view;
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,12 +21,12 @@ public class EstimateResourceView extends View{
     
     @Override
     public String[] getInputs() {
-        Scanner sc = new Scanner(System.in);
+        
         
         String[] inputs = new String[1];
         
-        System.out.println("Select one of the options below:");
-        System.out.println("T - Timber\n" +
+        this.console.println("Select one of the options below:");
+        this.console.println("T - Timber\n" +
                             "R - Ore\n" +
                             "G - Grains\n" +
                             "L - Legumes\n" +
@@ -36,15 +39,19 @@ public class EstimateResourceView extends View{
         boolean valid = false;
         
         while(valid == false){
-            String value = sc.nextLine();
-
-            if(value.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
+            try {
+                String value = this.keyboard.readLine();
+                
+                if(value.length() < 1){
+                    ErrorView.display(this.getClass().getName(), "Error closing files");
+                    continue;
+                }
+                
+                inputs[0] = value;
+                valid = true;
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "There was a problem readind the input: " + ex.getMessage());
             }
-
-            inputs[0] = value;
-            valid = true;
         }
         
         return inputs;

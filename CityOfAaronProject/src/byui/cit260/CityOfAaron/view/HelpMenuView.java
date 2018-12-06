@@ -5,7 +5,10 @@
  */
 package byui.cit260.CityOfAaron.view;
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,12 +32,11 @@ public class HelpMenuView extends View{
     }
     
     public String[] getInputs() {
-        Scanner sc = new Scanner(System.in);
         
         String[] inputs = new String[1];
         
-        System.out.println("Select one of the options below:");
-        System.out.println("G - What is the goal of the game?\n"
+        this.console.println("Select one of the options below:");
+        this.console.println("G - What is the goal of the game?\n"
                 + "M - How to move\n"
                 + "E - Estimate the number of resources\n"
                 + "H - Harvest resources"
@@ -44,15 +46,19 @@ public class HelpMenuView extends View{
         boolean valid = false;
         
         while(valid == false){
-            String value = sc.nextLine();
-
-            if(value.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
+            try {
+                String value = this.keyboard.readLine();
+                
+                if(value.length() < 1){
+                    ErrorView.display(this.getClass().getName(), "You must enter a value");
+                    continue;
+                }
+                
+                inputs[0] = value;
+                valid = true;
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "There was a problem reading the input: " + ex.getMessage());
             }
-
-            inputs[0] = value;
-            valid = true;
         }
         
         return inputs;
@@ -90,19 +96,19 @@ public class HelpMenuView extends View{
     }
     
     public void getGoalInstructions(){
-        System.out.println("Create goal instructions");
+        this.console.println("Create goal instructions");
     }
     public void getMoveInstructions(){
-        System.out.println("Create move instructions");
+        this.console.println("Create move instructions");
     }
     public void getEstimateInstructions(){
-        System.out.println("Create estimate resources instructions");
+        this.console.println("Create estimate resources instructions");
     }
     public void getHarvestInstructions(){
-        System.out.println("Create harvest resources instructions");
+        this.console.println("Create harvest resources instructions");
     }
     public void getDeliverInstructions(){
-        System.out.println("Create deliver resources instructions");
+        this.console.println("Create deliver resources instructions");
     }
 
     @Override

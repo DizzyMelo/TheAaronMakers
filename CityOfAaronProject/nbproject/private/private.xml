@@ -4,10 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/MoveActorView.java</file>
-            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/exceptions/GameControlException.java</file>
-            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/control/MapControl.java</file>
-            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/control/GameControl.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/exceptions/BarrelControlException.java</file>
             <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/exceptions/MapControlException.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/control/BarrelControl.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/GameMenuView.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,7 @@ import CIT260.CityOfAaron.model.Map;
 import buyi.cit260.CityOfArron.control.BarrelControl;
 import buyi.cit260.CityOfArron.exceptions.BarrelControlException;
 import cityofaaronproject.CityOfAaronProject;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,12 +43,12 @@ public class GameMenuView extends View{
      */
     @Override
     public String[] getInputs() {
-        Scanner sc = new Scanner(System.in);
+        
         
         String[] inputs = new String[1];
         
-        System.out.println("Select one of the options below:");
-        System.out.println("V - View map\n"
+        this.console.println("Select one of the options below:");
+        this.console.println("V - View map\n"
                 + "I - View list of items in inventory\n"
                 + "A - View list of actors\n"
                 + "S - View ship status\n"
@@ -68,15 +69,19 @@ public class GameMenuView extends View{
         boolean valid = false;
         
         while(valid == false){
-            String value = sc.nextLine();
-
-            if(value.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
+            try {
+                String value = this.keyboard.readLine();
+                
+                if(value.length() < 1){
+                    ErrorView.display(this.getClass().getName(), "You must enter a value");
+                    continue;
+                }
+                
+                inputs[0] = value;
+                valid = true;
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "There was a problem reading the input: " + ex.getMessage());
             }
-
-            inputs[0] = value;
-            valid = true;
         }
         
         return inputs;
@@ -147,7 +152,7 @@ public class GameMenuView extends View{
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid menu item");
+                this.console.println("Invalid menu item");
                 break;
         }
         
@@ -160,17 +165,17 @@ public class GameMenuView extends View{
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
         
-        System.out.println("THE LAND OF BOUNTIFUL");
-            System.out.print("    ");
+        this.console.println("THE LAND OF BOUNTIFUL");
+            this.console.print("    ");
         for(int i = 0; i < map.getNoOfColumns(); i++){
-            System.out.print(String.valueOf(i+1)+"    ");
+            this.console.print(String.valueOf(i+1)+"    ");
         }
         
         
         for(int i = 0; i < (map.getNoOfRows()); i++){
-            System.out.println(" ");
-            System.out.println("-------------------------");
-            System.out.print(String.valueOf(i+1));
+            this.console.println(" ");
+            this.console.println("-------------------------");
+            this.console.print(String.valueOf(i+1));
             for(int j = 0; j < (map.getNoOfColumns()); j++){
                 System.out.print(" | ");
                 
@@ -179,9 +184,9 @@ public class GameMenuView extends View{
                     
                     if(location.isVisited()){
                         String mapSymbol = "*";
-                        System.out.print(mapSymbol);
+                        this.console.print(mapSymbol);
                     }else{
-                        System.out.print("??");
+                        this.console.print("??");
                     }
                 
                 
@@ -189,8 +194,8 @@ public class GameMenuView extends View{
             System.out.print(" |");
         }
         
-        System.out.println("");
-        System.out.println("-------------------------");
+        this.console.println("");
+        this.console.println("-------------------------");
         
     }
 
@@ -219,44 +224,50 @@ public class GameMenuView extends View{
     }
 
     private void designBarrels() {
-        Scanner sc = new Scanner(System.in);
         
-        System.out.println("Enter the diameter of the barrel");
-        String diameterStr = sc.nextLine();
-        double diameter = 0;
         try{
-            diameter = Double.parseDouble(diameterStr);
-        }catch(NumberFormatException ex){
-            System.out.println("Please, enter a number!");
-            return;
+            
+            this.console.println("Enter the diameter of the barrel");
+            String diameterStr = this.keyboard.readLine();
+            double diameter = 0;
+            try{
+                diameter = Double.parseDouble(diameterStr);
+            }catch(NumberFormatException ex){
+                ErrorView.display(this.getClass().getName(), "Please enter a number: " + ex.getMessage());
+                return;
+            }
+            
+            
+            this.console.println("Enter the height of the barrel");
+            String heightStr = this.keyboard.readLine();
+            double height = 0;
+            try{
+                height = Double.parseDouble(heightStr);
+            }catch(NumberFormatException ex){
+                ErrorView.display(this.getClass().getName(), "Please enter a number: " + ex.getMessage());
+            }
+            
+            double volume = 0;
+            try {
+                volume = BarrelControl.calculateVolume(diameter, height);
+            } catch (BarrelControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+            
+            double maxWeight = 0;
+            try {
+                maxWeight = BarrelControl.calculateMaximumWeight(volume, height);
+            } catch (BarrelControlException ex) {
+                System.out.println(ex.getMessage());
+                ErrorView.display(this.getClass().getName(), "Error: " + ex.getMessage());
+            }
+            
+            this.console.println("The volume is: " + volume);
+            this.console.println("The maximum weight is: " + maxWeight);
+            
+        }catch(IOException ex){
+            ErrorView.display(this.getClass().getName(), "Error : " + ex.getMessage());
         }
-        
-        
-        System.out.println("Enter the height of the barrel");
-        String heightStr = sc.nextLine();
-        double height = 0;
-        try{
-            height = Double.parseDouble(heightStr);
-        }catch(NumberFormatException ex){
-            System.out.println("Please, enter a number!");
-        }
-        
-        double volume = 0;
-        try {
-            volume = BarrelControl.calculateVolume(diameter, height);
-        } catch (BarrelControlException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        double maxWeight = 0;
-        try {
-            maxWeight = BarrelControl.calculateMaximumWeight(volume, height);
-        } catch (BarrelControlException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        System.out.println("The volume is: " + volume);
-        System.out.println("The maximum weight is: " + maxWeight);
         
     }
 

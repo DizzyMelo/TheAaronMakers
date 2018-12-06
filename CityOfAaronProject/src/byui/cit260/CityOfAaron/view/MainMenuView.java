@@ -8,7 +8,10 @@ package byui.cit260.CityOfAaron.view;
 import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.Player;
 import buyi.cit260.CityOfArron.control.GameControl;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +35,6 @@ public class MainMenuView extends View {
     }
 
     public String[] getInputs() {
-        Scanner sc = new Scanner(System.in);
         
         String[] inputs = new String[1];
         
@@ -45,15 +47,19 @@ public class MainMenuView extends View {
         boolean valid = false;
         
         while(valid == false){
-            String value = sc.nextLine();
-
-            if(value.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
+            try {
+                String value = this.keyboard.readLine();
+                
+                if(value.length() < 1){
+                    ErrorView.display(this.getClass().getName(), "You must enter a value");
+                    continue;
+                }
+                
+                inputs[0] = value;
+                valid = true;
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "There was a problem reading the input: " + ex.getMessage());
             }
-
-            inputs[0] = value;
-            valid = true;
         }
         
         return inputs;
@@ -77,7 +83,7 @@ public class MainMenuView extends View {
             case "E":
                 return true;
             default:
-                System.out.println("Invalid menu item");
+                ErrorView.display(this.getClass().getName(), "Invalid menu item");
                 break;
         }
         

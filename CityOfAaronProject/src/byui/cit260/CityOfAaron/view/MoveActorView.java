@@ -12,6 +12,9 @@ import buyi.cit260.CityOfArron.control.MapControl;
 import buyi.cit260.CityOfArron.exceptions.MapControlException;
 import java.util.Scanner;
 import cityofaaronproject.CityOfAaronProject;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,15 +27,20 @@ public class MoveActorView extends View{
     
     @Override
     public String[] getInputs() {
-        Scanner sc = new Scanner(System.in);
         String[] inputs = new String[2];
-        
-        System.out.println("Instructions to move to new location");
-        String value = sc.nextLine();
-        inputs[0] = value;
-        
-        value = sc.nextLine();
-        inputs[1] = value;
+        try {
+            
+            System.out.println("Instructions to move to new location");
+            String value = this.keyboard.readLine();
+            inputs[0] = value;
+            
+            value = this.keyboard.readLine();
+            inputs[1] = value;
+            
+            
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), "There was a problem reading the input: " + ex.getMessage());
+        }
         
         return inputs;
     }
@@ -47,7 +55,7 @@ public class MoveActorView extends View{
            row = Integer.parseInt(rowString);
            column = Integer.parseInt(columnString);
         }catch (NumberFormatException e){
-           System.out.println("The row and column must be a number");
+           ErrorView.display(this.getClass().getName(), "There was a problem reading the input: " + e.getMessage());
            return false;
         }
         Player player = CityOfAaronProject.getCurrentGame().getPlayer();
@@ -59,6 +67,7 @@ public class MoveActorView extends View{
                        //MapControl.moveActor(actor, row, column);
                        }catch(MapControlException e){
                            System.out.println("error passed with the exception");
+                           ErrorView.display(this.getClass().getName(), "Terror passed with the exception " + e.getMessage());
                            return false;
                        }
             

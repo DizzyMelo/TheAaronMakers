@@ -7,8 +7,13 @@ import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.InventoryItem;
 import CIT260.CityOfAaron.model.ItemType;
 import CIT260.CityOfAaron.model.Provision;
+import byui.cit260.CityOfAaron.view.ErrorView;
 import byui.cit260.CityOfAaron.view.StartProgramView;
 import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,10 +28,20 @@ import java.util.Scanner;
 public class CityOfAaronProject {
     private static Game currentGame = null;
     
-    private static PrintWriter outfile = null;
-    private static BufferedReader infile = null;
+    private static PrintWriter outFile = null;
+    private static PrintWriter logFile = null;
+    private static BufferedReader inFile = null;
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        CityOfAaronProject.logFile = logFile;
+    }
     
     public static PrintWriter getOutFile(){
+        return outFile;
     }
     
     public static void setOutFile(PrintWriter outFile){
@@ -38,12 +53,16 @@ public class CityOfAaronProject {
     }
     
     public static void setInfile(BufferedReader inFile){
-         CityOfAaronProject = inFile;
+         CityOfAaronProject.inFile = inFile;
+    }
+        public static Game getCurrentGame(){
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game cerruentGame) {
+        CityOfAaronProject.currentGame = cerruentGame;
     }
     
-    
-    
-
     /**
      * @param args the command line arguments
      */
@@ -51,10 +70,9 @@ public class CityOfAaronProject {
         
      try{  
         
-        CityOfAaronProject.inFile =
-                new BufferedReader(new InputStreamReader(System.in));
-        
-        CityOfAaronProject.outFile = new PrintWriter(System.out, true);
+        inFile = new BufferedReader(new InputStreamReader(System.in)); 
+        outFile = new PrintWriter(System.out, true);
+        logFile = new PrintWriter("logFile.txt");
         
         // TODO code application logic here
         StartProgramView startProgramView = new StartProgramView();
@@ -63,9 +81,9 @@ public class CityOfAaronProject {
         
     } catch (Throwable e){
         
-        System.out.println["Exception: " + e.toString()+
-                           "\nCause:" + e.getCause() +
-                           "\nMessage:" + e.getMessage()];
+        ErrorView.display("CityOfAaronProject", "Exception: " + e.toString()+
+                                                "\nCause:" + e.getCause() +
+                                                "\nMessage:" + e.getMessage());
         
         e.printStackTrace();
     }
@@ -74,25 +92,25 @@ public class CityOfAaronProject {
          
          try{
          
-             if (CityOfAaronProject.inFile != null);
-                 CityOfAaronProject.inFile.close();
+             if (inFile != null){
+                 inFile.close();
+             }
                  
-             if (CityOfAaronProject.outFile != null)
-                 CityOfAaronProject.outFile.close();
+             if (outFile != null){
+                 outFile.close();
+             }
+             
+             if (logFile != null){
+                 logFile.close();
+             }
          
          } catch (IOException ex){
-             System.out.println("Error closing files");
+             //System.out.println("Error closing files");
+             ErrorView.display("CityOfAaronProject", "Error closing files");
              return;
          }
      }
-
-    public static Game getCurrentGame() {
-        return currentGame;
+     
     }
-
-    public static void setCurrentGame(Game cerruentGame) {
-        CityOfAaronProject.currentGame = cerruentGame;
-    }
-    
     
 }

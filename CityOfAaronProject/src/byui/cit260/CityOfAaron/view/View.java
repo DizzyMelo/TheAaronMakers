@@ -6,12 +6,21 @@
 package byui.cit260.CityOfAaron.view;
 
 import java.util.Scanner;
+import cityofaaronproject.CityOfAaronProject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author 1
  */
 public abstract class View implements ViewInterface {
+    
+    protected final BufferedReader keyboard = CityOfAaronProject.getInFile();
+    protected final PrintWriter console = CityOfAaronProject.getOutFile();
     
     public View(){
     }
@@ -22,7 +31,7 @@ public abstract class View implements ViewInterface {
         do{
             String[] inputs = getInputs();
             if(inputs[0].length() <= 0){
-                System.out.println("You must enter a value");
+                ErrorView.display(this.getClass().getName(), "You must enter a value");
                 continue;
             }
             endView = doAction(inputs);
@@ -30,7 +39,6 @@ public abstract class View implements ViewInterface {
     }
         @Override    
         public String getInput(String promptMessage){
-            Scanner sc = new Scanner(System.in);
             String[] inputs = new String[1];
         
             System.out.println(promptMessage);
@@ -38,15 +46,20 @@ public abstract class View implements ViewInterface {
             boolean valid = false;
 
             while(valid == false){
-                String value = sc.nextLine();
-
-                if(String.valueOf(value).length() < 1){
-                    System.out.println("You must enter a value");
-                    continue;
+                try {
+                    String value = this.keyboard.readLine();
+                    
+                    if(String.valueOf(value).length() < 1){
+                        ErrorView.display(this.getClass().getName(), "You must enter a value");
+                        continue;
+                    }
+                    
+                    inputs[0] = value;
+                    valid = true;
+                } catch (IOException ex) {
+                    System.out.println("There was a problem reading the input");
+                    ErrorView.display(this.getClass().getName(), "There was a problem reading the input: " + ex.getMessage());
                 }
-
-                inputs[0] = value;
-                valid = true;
             }
         return inputs[0];
     }

@@ -10,7 +10,10 @@ import CIT260.CityOfAaron.model.ItemType;
 import CIT260.CityOfAaron.model.Location;
 import CIT260.CityOfAaron.model.Wagon;
 import buyi.cit260.CityOfArron.control.GameControl;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +30,7 @@ public abstract class HarvestResourceView extends View {
         do{
             String[] inputs = getInputs();
             if(inputs[0].length() <= 0){
-                System.out.println("You must enter a value greater than zero");
+                ErrorView.display(this.getClass().getName(), "You must enter a value greater than zero");
                 continue;
             }
             endView = doAction(inputs);
@@ -35,24 +38,27 @@ public abstract class HarvestResourceView extends View {
     }
     @Override
     public String[] getInputs() {
-        Scanner sc = new Scanner(System.in);
         
         String[] inputs = new String[1];
         
-        System.out.println("Enter the percentage you want to harvest from the amount: ");
+        this.console.println("Enter the percentage you want to harvest from the amount: ");
         
         boolean valid = false;
         
         while(valid == false){
-            String value = sc.nextLine();
-
-            if(String.valueOf(value).length() < 1){
-                System.out.println("You must enter a value");
-                continue;
+            try {
+                String value = this.keyboard.readLine();
+                
+                if(String.valueOf(value).length() < 1){
+                    ErrorView.display(this.getClass().getName(), "You must enter a value");
+                    continue;
+                }
+                
+                inputs[0] = value;
+                valid = true;
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "There was a problem reading the input: " + ex.getMessage());
             }
-
-            inputs[0] = value;
-            valid = true;
         }
         
         return inputs;
@@ -75,7 +81,7 @@ public abstract class HarvestResourceView extends View {
         
         
         result = GameControl.harvestResources(location, tools, wagon, percentage);
-        System.out.println("The result is: " + result);
+        this.console.println("The result is: " + result);
         
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayGameMenuView();
