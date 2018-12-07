@@ -6,6 +6,7 @@ import CIT260.CityOfAaron.model.Condition;
 import CIT260.CityOfAaron.model.Game;
 import CIT260.CityOfAaron.model.InventoryItem;
 import CIT260.CityOfAaron.model.ItemType;
+import CIT260.CityOfAaron.model.Player;
 import CIT260.CityOfAaron.model.Provision;
 import byui.cit260.CityOfAaron.view.ErrorView;
 import byui.cit260.CityOfAaron.view.StartProgramView;
@@ -27,6 +28,7 @@ import java.io.InputStreamReader;
  */
 public class CityOfAaronProject {
     private static Game currentGame = null;
+    private static Player currentPlayer = null;
     
     private static PrintWriter outFile = null;
     private static PrintWriter logFile = null;
@@ -62,6 +64,16 @@ public class CityOfAaronProject {
     public static void setCurrentGame(Game cerruentGame) {
         CityOfAaronProject.currentGame = cerruentGame;
     }
+
+    public static Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public static void setCurrentPlayer(Player currentPlayer) {
+        CityOfAaronProject.currentPlayer = currentPlayer;
+    }
+    
+    
     
     /**
      * @param args the command line arguments

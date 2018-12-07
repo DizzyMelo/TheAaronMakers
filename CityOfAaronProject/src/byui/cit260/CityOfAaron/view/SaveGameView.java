@@ -4,28 +4,26 @@
  * and open the template in the editor.
  */
 package byui.cit260.CityOfAaron.view;
-
 import CIT260.CityOfAaron.model.Game;
 import buyi.cit260.CityOfArron.control.GameControl;
+import buyi.cit260.CityOfArron.exceptions.GameControlException;
 import cityofaaronproject.CityOfAaronProject;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author danielmelo
  */
-public class StartExistingGameView extends View{
-
-    public StartExistingGameView() {
-        
-    }
+public class SaveGameView extends View{
 
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
         
-        this.console.println("Start a saved game instructions");
-        String input1 = this.getInput("Enter the path to start the saved the file");
+        this.console.println("Save the game instructions");
+        String input1 = this.getInput("Enter the path to save the file");
         inputs[0] = input1;
         return inputs;
     }
@@ -36,7 +34,7 @@ public class StartExistingGameView extends View{
         Game game = CityOfAaronProject.getCurrentGame();
         
         try {
-            GameControl.getGame(filePath);
+            GameControl.saveGame(game, filePath);
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), "Error IO: " + ex.getMessage());
             return false;
@@ -45,11 +43,13 @@ public class StartExistingGameView extends View{
             return false;
         }
         
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.display();
-        
+        this.console.println("The file was saved in the following location: " + filePath);
         
         return true;
     }
+    
+    
+    
+    
     
 }

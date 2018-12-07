@@ -74,8 +74,8 @@ public class MainMenuView extends View {
             case "N":
                 startNewGame();
                 break;
-            case "R":
-                restartGame();
+            case "S":
+                startSavedGame();
                 break;
             case "H":
                 getHelp();
@@ -97,9 +97,9 @@ public class MainMenuView extends View {
         gameView.displayGameMenuView();
     }
     
-    public void restartGame(){
+    public void startSavedGame(){
         StartExistingGameView startExistingGameView = new StartExistingGameView();
-        startExistingGameView.displayStartExistingGameView();
+        startExistingGameView.display();
     }
     
     public void getHelp(){

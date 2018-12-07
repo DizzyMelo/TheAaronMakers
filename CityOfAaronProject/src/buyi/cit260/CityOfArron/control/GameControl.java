@@ -20,6 +20,11 @@ import CIT260.CityOfAaron.model.Wagon;
 import cityofaaronproject.CityOfAaronProject;
 import java.util.Scanner;
 import buyi.cit260.CityOfArron.exceptions.GameControlException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -214,5 +219,40 @@ public class GameControl {
          
          return items;
      }
+     
+     public static void saveGame(Game game, String filePath) throws Exception{ 
+        if(game == null || (filePath == null || filePath.length() < 1)){
+            throw new GameControlException("Game of File path is invalid!");
+        }
+        
+        try(FileOutputStream outPut = new FileOutputStream(filePath);
+            ObjectOutputStream obj = new ObjectOutputStream(outPut)){
+            
+            obj.writeObject(game);
+        }catch(IOException ex){
+            throw ex;
+        }
+        
+    }
+     
+    public static Game getGame(String filePath) throws GameControlException, ClassNotFoundException, IOException {
+        if(filePath == null){
+            throw new GameControlException("Invalid file path");
+        }
+        Game game = null;
+        try(FileInputStream outPut = new FileInputStream(filePath);
+            ObjectInputStream obj = new ObjectInputStream(outPut)){
+            
+            game = (Game) obj.readObject();
+            CityOfAaronProject.setCurrentGame(game);
+            CityOfAaronProject.setCurrentPlayer(game.getPlayer());
+            
+        }catch(IOException ex){
+            throw ex;
+        }
+        
+        
+        return game;
+    }
      
 }

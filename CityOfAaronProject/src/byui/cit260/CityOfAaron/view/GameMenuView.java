@@ -296,7 +296,8 @@ public class GameMenuView extends View{
     }
 
     private void saveGame() {
-        System.out.println("saveGame called");
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.display();
     }
 
     @Override
