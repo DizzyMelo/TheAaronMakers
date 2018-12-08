@@ -63,6 +63,7 @@ public class GameMenuView extends View{
                 + "P - Pack ship\n"
                 + "J - Launch ship\n"
                 + "S - Save game\n"
+                + "G - Game Reports\n"
                 + "H - Help\n"
                 + "Q - Quit");
         
@@ -128,7 +129,6 @@ public class GameMenuView extends View{
                 this.constructTools();
                 break;
             case "R":
-                
                 //HarvestResourceView.displayHarvestResouceView();
                 break;
             case "D":
@@ -146,8 +146,12 @@ public class GameMenuView extends View{
             case "S":
                 this.saveGame();
                 break;
+                
+            case "G":
+                this.displayGameReporst();
+                break;
             case "H":
-                this.displayMap();
+                this.displayHelp();
                 break;
             case "Q":
                 return true;
@@ -294,6 +298,16 @@ public class GameMenuView extends View{
     private void launchShip() {
         System.out.println("launchShip called");
     }
+    
+    private void displayHelp() {
+        HelpMenuView hm = new HelpMenuView();
+        hm.displayHelpMenuView();
+    }
+    
+    private void displayGameReporst() {
+        GameReportsView hm = new GameReportsView();
+        hm.display();
+    }
 
     private void saveGame() {
         SaveGameView saveGameView = new SaveGameView();
@@ -309,5 +323,7 @@ public class GameMenuView extends View{
     public String getInput(String promptMessage) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
 }

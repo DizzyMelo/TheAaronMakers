@@ -5,6 +5,7 @@
  */
 package buyi.cit260.CityOfArron.control;
 
+import CIT260.CityOfAaron.model.Actor;
 import CIT260.CityOfAaron.model.Barrel;
 import CIT260.CityOfAaron.model.Condition;
 import CIT260.CityOfAaron.model.Game;
@@ -229,6 +230,26 @@ public class GameControl {
             ObjectOutputStream obj = new ObjectOutputStream(outPut)){
             
             obj.writeObject(game);
+        }catch(IOException ex){
+            throw ex;
+        }
+        
+    }
+     
+     public static boolean saveListOfActors(String filePath) throws Exception{ 
+        if(filePath == null || filePath.length() < 1){
+            throw new GameControlException("File path is invalid!");
+        }
+        
+        try(FileOutputStream outPut = new FileOutputStream(filePath);
+            ObjectOutputStream obj = new ObjectOutputStream(outPut)){
+            
+            for(int i = 0; i < Actor.values().length; i++){
+                obj.writeObject(Actor.values()[i]);
+            }
+            
+            return true;
+                    
         }catch(IOException ex){
             throw ex;
         }

@@ -17,10 +17,10 @@ import java.util.Objects;
 public enum Actor implements Serializable{
     
     Nephi("Nephi", "description", new Point(0,0)),
-    Lehi("Nephi", "description", new Point(0,0)),
-    Alma("Nephi", "description", new Point(0,0)),
-    Moroni("Nephi", "description", new Point(0,0)),
-    Mormon("Nephi", "description", new Point(0,0));
+    Lehi("Lehi", "description", new Point(0,0)),
+    Alma("Alma", "description", new Point(0,0)),
+    Moroni("Moroni", "description", new Point(0,0)),
+    Mormon("Mormon", "description", new Point(0,0));
     
     private String name, description;
     private Point coordinates;
