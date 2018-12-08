@@ -4,10 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/cityofaaronproject/CityOfAaronProject.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/View.java</file>
             <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/SaveGameView.java</file>
-            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/StartExistingGameView.java</file>
             <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/buyi/cit260/CityOfArron/control/GameControl.java</file>
-            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/MainMenuView.java</file>
+            <file>file:/Users/danielmelo/Desktop/TheAaronMakers/CityOfAaronProject/src/byui/cit260/CityOfAaron/view/GameReportsView.java</file>
         </group>
     </open-files>
 </project-private>
