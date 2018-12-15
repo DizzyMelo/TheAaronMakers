@@ -23,8 +23,14 @@ public class StartProgramView extends View{
         boolean endOfView = false;
         
         do {
-            String playersName = this.getInput("\nWelcome to this amazing Game"
-                + "\nEnter your name");
+            String playersName = this.getInput("\n"
+                    + "\t==========================================="
+                    + "\n"
+                    + "\t\tWelcome to this amazing Game"
+                    + "\n"
+                    + "\t==========================================="
+                    + "\n\n"
+                + "\n*** Enter your name ***\n");
             String[] input = new String[1];
             input[0] = playersName;
             if(input[0].toUpperCase().equals("Q")){
@@ -45,8 +51,8 @@ public class StartProgramView extends View{
                 + "Enter a different name.");
             return false;
         }
-        System.out.println("================================================= Welcome to the game " + playersName + " We hope you have a lot of fun!"
-                + "=================================================");
+        System.out.println("=================================== Welcome to the game " + playersName + " We hope you have a lot of fun!"
+                + "===================================");
         
         MainMenuView menuView = new MainMenuView();
         menuView.displayMainMenuView();
