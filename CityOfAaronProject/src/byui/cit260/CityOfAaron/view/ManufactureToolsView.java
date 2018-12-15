@@ -5,6 +5,9 @@
  */
 package byui.cit260.CityOfAaron.view;
 
+import CIT260.CityOfAaron.model.Tool;
+import CIT260.CityOfAaron.model.ToolType;
+import buyi.cit260.CityOfArron.control.ToolControl;
 import java.util.Scanner;
 
 /**
@@ -23,7 +26,7 @@ public class ManufactureToolsView extends View {
          
          String[] inputs = new String[1];
          
-         System.out.println("Select a tool:");
+         System.out.println("\n Select a tool:");
          System.out.println("A - Axe\n" +
                              "H - Hammer\n" +
                              "D - Drill\n" +
@@ -79,25 +82,46 @@ public class ManufactureToolsView extends View {
          
          return false;
      }
-
+     
      private void selectAxe() {
-         System.out.println("You Selected Axe");
+         Tool[] tools = ToolControl.addTools(ToolType.Axe);
+         this.console.println("=================================================");
+         this.console.println("\tItem added to the inventory list!\n\tNow you have "+ 
+                                tools[ToolType.Axe.ordinal()].getQuantity() + " Axes in the inventory");
+         this.console.println("=================================================");
      }
 
      private void selectHammer() {
-         System.out.println("You Selected Hammer");
+         Tool[] tools = ToolControl.addTools(ToolType.Hammer);
+         this.console.println("=================================================");
+         this.console.println("\tItem added to the inventory list!\n\tNow you have "+ 
+                                tools[ToolType.Axe.ordinal()].getQuantity() + " Hammers in the inventory");
+         this.console.println("=================================================");
      }
 
      private void selectDrill() {
-         System.out.println("You Selected Drill");
+         Tool[] tools = ToolControl.addTools(ToolType.Drill);
+         this.console.println("=================================================");
+         this.console.println("\tItem added to the inventory list!\n\tNow you have "+ 
+                                tools[ToolType.Axe.ordinal()].getQuantity() + " Drills in the inventory");
+         this.console.println("=================================================");
      }
 
      private void selectShovel() {
-         System.out.println("You Selected Shovel");
+         Tool[] tools = ToolControl.addTools(ToolType.Shovel);
+         this.console.println("=================================================");
+         this.console.println("\tItem added to the inventory list!\n\tNow you have "+ 
+                                tools[ToolType.Axe.ordinal()].getQuantity() + " Shovels in the inventory");
+         this.console.println("=================================================");
+         
      }
 
      private void selectSickle() {
-         System.out.println("You Selected Sickle");
+         Tool[] tools = ToolControl.addTools(ToolType.Sickle);
+         this.console.println("=================================================");
+         this.console.println("\tItem added to the inventory list!\n\tNow you have "+ 
+                                tools[ToolType.Axe.ordinal()].getQuantity() + " Sickles in the inventory");
+         this.console.println("=================================================");
      }
 
      @Override

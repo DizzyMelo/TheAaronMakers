@@ -24,6 +24,7 @@ public class Game implements Serializable{
    private Player thePlayer;
    private InventoryItem[] items;
    private Map map;
+   private Tool[] tools;
    
    
 
@@ -101,8 +102,15 @@ public class Game implements Serializable{
     public void setMap(Map map) {
         this.map = map;
     }
-    
 
+    public Tool[] getTools() {
+        return tools;
+    }
+
+    public void setTools(Tool[] tools) {
+        this.tools = tools;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

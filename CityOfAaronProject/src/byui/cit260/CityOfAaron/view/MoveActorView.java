@@ -30,10 +30,11 @@ public class MoveActorView extends View{
         String[] inputs = new String[2];
         try {
             
-            System.out.println("Instructions to move to new location");
+            System.out.println("Enter the X coordinate");
             String value = this.keyboard.readLine();
             inputs[0] = value;
             
+            System.out.println("Enter the Y coordinate");
             value = this.keyboard.readLine();
             inputs[1] = value;
             

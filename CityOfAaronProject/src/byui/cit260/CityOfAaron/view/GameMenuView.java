@@ -181,9 +181,8 @@ public class GameMenuView extends View{
             this.console.println("-------------------------");
             this.console.print(String.valueOf(i+1));
             for(int j = 0; j < (map.getNoOfColumns()); j++){
-                System.out.print(" | ");
+                this.console.print(" | ");
                 
-                    
                     Location location = locations[i][j];
                     
                     if(location.isVisited()){
@@ -193,9 +192,8 @@ public class GameMenuView extends View{
                         this.console.print("??");
                     }
                 
-                
             }
-            System.out.print(" |");
+            this.console.print(" |");
         }
         
         this.console.println("");
@@ -220,7 +218,8 @@ public class GameMenuView extends View{
     }
 
     private void movePersonNewLocation() {
-        System.out.println("movePersonNewLocation called");
+        MoveActorView mv = new MoveActorView();
+        mv.display();
     }
 
     private void estimateResourceNeeded() {
@@ -228,55 +227,13 @@ public class GameMenuView extends View{
     }
 
     private void designBarrels() {
-        
-        try{
-            
-            this.console.println("Enter the diameter of the barrel");
-            String diameterStr = this.keyboard.readLine();
-            double diameter = 0;
-            try{
-                diameter = Double.parseDouble(diameterStr);
-            }catch(NumberFormatException ex){
-                ErrorView.display(this.getClass().getName(), "Please enter a number: " + ex.getMessage());
-                return;
-            }
-            
-            
-            this.console.println("Enter the height of the barrel");
-            String heightStr = this.keyboard.readLine();
-            double height = 0;
-            try{
-                height = Double.parseDouble(heightStr);
-            }catch(NumberFormatException ex){
-                ErrorView.display(this.getClass().getName(), "Please enter a number: " + ex.getMessage());
-            }
-            
-            double volume = 0;
-            try {
-                volume = BarrelControl.calculateVolume(diameter, height);
-            } catch (BarrelControlException ex) {
-                System.out.println(ex.getMessage());
-            }
-            
-            double maxWeight = 0;
-            try {
-                maxWeight = BarrelControl.calculateMaximumWeight(volume, height);
-            } catch (BarrelControlException ex) {
-                System.out.println(ex.getMessage());
-                ErrorView.display(this.getClass().getName(), "Error: " + ex.getMessage());
-            }
-            
-            this.console.println("The volume is: " + volume);
-            this.console.println("The maximum weight is: " + maxWeight);
-            
-        }catch(IOException ex){
-            ErrorView.display(this.getClass().getName(), "Error : " + ex.getMessage());
-        }
-        
+        ManufactureBarrelView mb = new ManufactureBarrelView();
+        mb.display();
     }
 
     private void constructTools() {
-        System.out.println("constructTools called");
+        ManufactureToolsView mt = new ManufactureToolsView();
+        mt.display();
     }
 
     private void harvestResource() {

@@ -5,6 +5,7 @@
  */
 package buyi.cit260.CityOfArron.control;
 
+import CIT260.CityOfAaron.model.InventoryItem;
 import buyi.cit260.CityOfArron.exceptions.BarrelControlException;
 
 /**
@@ -46,4 +47,5 @@ public class BarrelControl {
         
         return maximumWeight;
     }
+    
 }

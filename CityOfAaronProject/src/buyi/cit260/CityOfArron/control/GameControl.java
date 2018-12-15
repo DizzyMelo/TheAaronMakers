@@ -17,6 +17,8 @@ import CIT260.CityOfAaron.model.Map;
 import CIT260.CityOfAaron.model.Player;
 import CIT260.CityOfAaron.model.ResourcesType;
 import CIT260.CityOfAaron.model.StorageShed;
+import CIT260.CityOfAaron.model.Tool;
+import CIT260.CityOfAaron.model.ToolType;
 import CIT260.CityOfAaron.model.Wagon;
 import cityofaaronproject.CityOfAaronProject;
 import java.util.Scanner;
@@ -146,11 +148,50 @@ public class GameControl {
         }
         game.setMap(map);
         
+        game.setTools(createTools());
+        
         System.out.println("Create game ran ok");
         return 1;
     }
     
-     public static InventoryItem[] createItems(){
+    public static Tool[] createTools(){
+        
+        Tool[] tools = new Tool[5];
+        
+        Tool tool = new Tool();
+        tool.setQuantity(0);
+        tool.setType(ToolType.Axe);
+        
+        tools[ToolType.Axe.ordinal()] = tool;
+        
+        Tool tool2 = new Tool();
+        tool.setQuantity(0);
+        tool.setType(ToolType.Hammer);
+        
+        tools[ToolType.Hammer.ordinal()] = tool2;
+        
+        Tool tool3 = new Tool();
+        tool.setQuantity(0);
+        tool.setType(ToolType.Drill);
+        
+        tools[ToolType.Drill.ordinal()] = tool3;
+        
+        Tool tool4 = new Tool();
+        tool.setQuantity(0);
+        tool.setType(ToolType.Shovel);
+        
+        tools[ToolType.Shovel.ordinal()] = tool4;
+        
+        Tool tool5 = new Tool();
+        tool.setQuantity(0);
+        tool.setType(ToolType.Sickle);
+        
+        tools[ToolType.Sickle.ordinal()] = tool5;
+        
+        return tools;
+    }
+    
+    public static InventoryItem[] createItems(){
          System.out.println("Create Items called");
          
          InventoryItem[] items = new InventoryItem[15];

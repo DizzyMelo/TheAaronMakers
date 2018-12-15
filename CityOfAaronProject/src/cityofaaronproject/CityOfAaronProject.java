@@ -8,6 +8,7 @@ import CIT260.CityOfAaron.model.InventoryItem;
 import CIT260.CityOfAaron.model.ItemType;
 import CIT260.CityOfAaron.model.Player;
 import CIT260.CityOfAaron.model.Provision;
+import CIT260.CityOfAaron.model.Tool;
 import byui.cit260.CityOfAaron.view.ErrorView;
 import byui.cit260.CityOfAaron.view.StartProgramView;
 import java.util.Scanner;
@@ -15,6 +16,7 @@ import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -33,6 +35,7 @@ public class CityOfAaronProject {
     private static PrintWriter outFile = null;
     private static PrintWriter logFile = null;
     private static BufferedReader inFile = null;
+    private static ArrayList<Tool> tools = new ArrayList<>();
 
     public static PrintWriter getLogFile() {
         return logFile;
@@ -71,6 +74,14 @@ public class CityOfAaronProject {
 
     public static void setCurrentPlayer(Player currentPlayer) {
         CityOfAaronProject.currentPlayer = currentPlayer;
+    }
+
+    public static ArrayList<Tool> getTools() {
+        return tools;
+    }
+
+    public static void setTools(ArrayList<Tool> tools) {
+        CityOfAaronProject.tools = tools;
     }
     
     
@@ -120,9 +131,8 @@ public class CityOfAaronProject {
              //System.out.println("Error closing files");
              ErrorView.display("CityOfAaronProject", "Error closing files");
              return;
-         }
-     }
-     
+            }
+        } 
     }
     
 }

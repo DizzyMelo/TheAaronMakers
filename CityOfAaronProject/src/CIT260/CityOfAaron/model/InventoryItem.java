@@ -17,7 +17,7 @@ public class InventoryItem implements Serializable{
     private ItemType itemType;
     private int quantity;
     private Condition condition;
-
+    
     public InventoryItem() {
     }
 
